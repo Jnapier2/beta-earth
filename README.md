@@ -2,13 +2,13 @@
 
 [![CI](https://github.com/Jnapier2/beta-earth/actions/workflows/ci.yml/badge.svg)](https://github.com/Jnapier2/beta-earth/actions/workflows/ci.yml)
 
-Beta Earth is a local-first, browser-based role-playing game vertical slice built with Python's standard library. It demonstrates a cleanly layered game engine, validated content catalogs, revision-safe persistence, and a loopback-only HTTP interface without third-party runtime dependencies.
+Beta Earth is a local-first, browser-based role-playing game vertical slice built with Python's standard library. Its layered engine combines validated content catalogs, revision-safe persistence, and a loopback-only HTTP interface without third-party runtime dependencies.
 
 ![Beta Earth gameplay interface](assets/beta-earth-gameplay.jpg)
 
-Version `0.4.11` includes a six-room Sprawl 15 scenario, character setup, Caroline's guided route mission, wallet and inventory state, one accountable barter transaction, and a read-only DID readiness preview.
+Version `0.4.11` includes a six-room Sprawl 15 scenario, character setup, Caroline's guided route mission, wallet and inventory state, a barter flow, and a read-only equipment-readiness preview.
 
-## Engineering highlights
+## Architecture and gameplay
 
 - **Layered design:** domain rules and models stay independent of application, infrastructure, and presentation adapters.
 - **One command surface:** the HUD, API authorization, keyboard shortcuts, mission tracer, and barter actions share the same ordered set of current actions.
