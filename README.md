@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/Jnapier2/beta-earth/actions/workflows/ci.yml/badge.svg)](https://github.com/Jnapier2/beta-earth/actions/workflows/ci.yml)
 
-Beta Earth is a local-first, browser-based role-playing game vertical slice built with Python's standard library. Its layered engine combines validated content catalogs, revision-safe persistence, and a loopback-only HTTP interface without third-party runtime dependencies.
+Beta Earth is a working, local-first browser RPG vertical slice built with Python's standard library. A layered engine, validated catalogs, revision-safe saves, and a loopback-only HTTP interface keep behavior testable and local state recoverable without third-party runtime dependencies.
 
 ![Beta Earth gameplay interface](assets/beta-earth-gameplay.jpg)
 
