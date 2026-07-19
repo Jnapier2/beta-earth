@@ -11,7 +11,7 @@ Version `0.4.11` includes a six-room Sprawl 15 scenario, character setup, Caroli
 ## Architecture and gameplay
 
 - **Layered design:** domain rules and models stay independent of application, infrastructure, and presentation adapters.
-- **One command surface:** the HUD, API authorization, keyboard shortcuts, mission tracer, and barter actions share the same ordered set of current actions.
+- **One command surface:** the HUD, API authorization, keyboard shortcuts, mission tracer, and barter actions share the same ordered set of current actions, preventing an interface from offering behavior the engine has not authorized.
 - **Defensive persistence:** JSON saves use strict validation, atomic replacement, revision checks, bounded migrations, and migration backups.
 - **Local security boundary:** the bundled server binds only to `127.0.0.1`, rejects non-loopback host/origin inputs, limits request size and concurrency, and serves restrictive security headers.
 - **Portable runtime:** content and runtime paths are project-relative; an OS-assigned port avoids scanning or displacing other applications.
