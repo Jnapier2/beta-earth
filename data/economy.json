@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "items": {
+    "route_tracer_calibration": {
+      "name": "Route-Tracer Calibration",
+      "description": "Caroline's verified hazard overlays and return-route tuning, stored in the limiter as a durable navigation calibration.",
+      "category": "limiter_calibration",
+      "canon_refs": [
+        "Gameplay Mechanics.doc — Missions use a navigator/mission tracer",
+        "Gameplay Mechanics.doc — DID information is stored in the player's limiter"
+      ]
+    },
+    "lane_safe_filter": {
+      "name": "Lane-Safe Filter",
+      "description": "A sealed breathing filter rated for one careful crossing through Sprawl 15's purple mist.",
+      "category": "survival_supply",
+      "canon_refs": [
+        "Land of Beta Earth.doc — Sprawl territories and local survival conditions",
+        "Gameplay Mechanics.doc — local economies and mission progression"
+      ]
+    }
+  },
+  "barter_offers": {
+    "lane_safe_filter_trade": {
+      "room_id": "barter_store",
+      "label": "Barter for a Lane-Safe Filter",
+      "command": "barter lane-safe filter",
+      "description": "Exchange 3 cred for a sealed filter after Caroline's trust establishes that you can read the lane.",
+      "cost_cred": 3,
+      "grants": [
+        {
+          "item_id": "lane_safe_filter",
+          "quantity": 1
+        }
+      ],
+      "requires_flags": [
+        "trusted_by_caroline"
+      ],
+      "once": true,
+      "priority": 18,
+      "canon_refs": [
+        "Gameplay Mechanics.doc — local/faction economies and progression",
+        "Land of Beta Earth.doc — Sprawl 15 survival and local power structures"
+      ]
+    }
+  }
+}

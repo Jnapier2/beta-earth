@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Beta Earth — Clean Rebuild</title>
+  <link rel="stylesheet" href="/assets/app.css">
+  <script src="/assets/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#current-actions">Skip to current options</a>
+  <div class="shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">BETA EARTH // CLEAN REBUILD</p>
+        <h1 id="world-title">Initializing limiter…</h1>
+      </div>
+      <div class="connection" aria-live="polite">
+        <span id="connection-dot" class="connection-dot"></span>
+        <span id="connection-text">Connecting</span>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="scene panel" aria-labelledby="room-name">
+        <div class="scene-heading">
+          <div>
+            <p id="zone-name" class="eyebrow">UNKNOWN ZONE</p>
+            <h2 id="room-name">Loading location…</h2>
+          </div>
+          <span id="danger-chip" class="status-chip">WAIT</span>
+        </div>
+        <p id="room-description" class="room-description">The local server is preparing your state.</p>
+        <p id="room-ambient" class="ambient"></p>
+        <div id="message" class="story-message" role="status" aria-live="polite">Current options will appear below.</div>
+        <div class="state-strip" aria-label="Player state">
+          <div><span>Stage</span><strong id="player-stage">—</strong></div>
+          <div><span>Identity</span><strong id="player-identity">—</strong></div>
+          <div><span>Revision</span><strong id="player-revision">—</strong></div>
+          <div><span>Wallet</span><strong><span id="cred-balance">0</span> cred</strong></div>
+        </div>
+        <div id="stats" class="stats" aria-label="Attributes"></div>
+      </section>
+
+      <aside class="side-column">
+        <section class="panel compact-panel mission-panel" aria-labelledby="mission-heading">
+          <div class="compact-heading">
+            <div>
+              <p class="eyebrow">MISSION TRACER</p>
+              <h2 id="mission-heading">Journal</h2>
+            </div>
+            <span id="mission-count" class="status-chip">0 ACTIVE</span>
+          </div>
+          <div id="mission-journal" class="mission-journal" aria-live="polite">
+            <p class="muted">No mission data yet.</p>
+          </div>
+        </section>
+
+
+        <section class="panel compact-panel inventory-panel" aria-labelledby="inventory-heading">
+          <div class="compact-heading">
+            <div>
+              <p class="eyebrow">CARRIED & TRADED</p>
+              <h2 id="inventory-heading">Inventory</h2>
+            </div>
+            <span id="inventory-count" class="status-chip">0 ITEMS</span>
+          </div>
+          <div id="inventory-list" class="inventory-list" aria-live="polite">
+            <p class="muted">Nothing carried yet.</p>
+          </div>
+          <div id="barter-offers" class="barter-offers" aria-live="polite"></div>
+        </section>
+
+        <section class="panel compact-panel did-panel" aria-labelledby="did-heading">
+          <div class="compact-heading">
+            <div>
+              <p class="eyebrow">DID READINESS</p>
+              <h2 id="did-heading">Equipment preview</h2>
+            </div>
+            <span id="did-tier" class="status-chip">LOCKED</span>
+          </div>
+          <div id="did-readiness" class="did-readiness" aria-live="polite">
+            <p class="muted">Read-only readiness data will appear after the limiter responds.</p>
+          </div>
+        </section>
+
+        <section class="panel compact-panel" aria-labelledby="route-heading">
+          <p class="eyebrow">VALID ROUTES</p>
+          <h2 id="route-heading">Local map</h2>
+          <div id="exits" class="exit-grid"><span class="muted">No route data yet.</span></div>
+        </section>
+
+        <section class="panel compact-panel" aria-labelledby="system-heading">
+          <p class="eyebrow">SYSTEM CONTRACT</p>
+          <h2 id="system-heading">One action source</h2>
+          <p class="muted">The buttons, command text, keyboard shortcuts, API, and mission recommendations all consume the same current-action list.</p>
+        </section>
+      </aside>
+
+      <section id="current-actions" class="actions-panel panel" aria-labelledby="actions-heading">
+        <div class="actions-header">
+          <div>
+            <p class="eyebrow">PLAYABLE NOW</p>
+            <h2 id="actions-heading">Current options available</h2>
+          </div>
+          <span id="action-count" class="status-chip">0 OPTIONS</span>
+        </div>
+        <div id="action-grid" class="action-grid" aria-live="polite">
+          <div class="loading-card">Loading current options…</div>
+        </div>
+
+        <details class="command-details" open>
+          <summary>Selectable command text</summary>
+          <p class="muted">Select or copy the exact command, or activate its Execute button.</p>
+          <div id="command-list" class="command-list"></div>
+        </details>
+
+        <form id="command-form" class="command-form">
+          <label for="command-input">Type an available command</label>
+          <div class="command-row">
+            <input id="command-input" name="command" autocomplete="off" spellcheck="false" placeholder="Example: talk Caroline">
+            <button type="submit" class="send-button">Execute</button>
+          </div>
+          <p class="keyboard-help">Number keys 1–9 activate visible options when you are not typing.</p>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <span>Local-only HUD</span>
+      <span aria-hidden="true">•</span>
+      <button id="reset-button" class="text-button" type="button">Reset this profile</button>
+    </footer>
+  </div>
+  <noscript>This HUD requires JavaScript to render and execute current options.</noscript>
+</body>
+</html>

@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=77,<83"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "beta-earth-clean-rebuild"
+version = "0.4.11"
+description = "A cleanly layered local-first Beta Earth MUD vertical slice."
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+authors = [{name = "J. R. Napier / Beta Earth Project"}]
+dependencies = []
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.unittest]
+start-directory = "tests"

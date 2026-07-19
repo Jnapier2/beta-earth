@@ -1,0 +1,221 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://beta-earth.local/schema/quests-1.0.json",
+  "title": "Beta Earth Clean Rebuild Quest Catalog",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "quests"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "quests": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "pattern": "^[a-z0-9][a-z0-9_]*$"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/quest"
+      }
+    }
+  },
+  "$defs": {
+    "stringList": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "objective": {
+      "type": "object",
+      "required": [
+        "id",
+        "label",
+        "description",
+        "kind",
+        "target",
+        "room_id"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_]*$"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": [
+            "visit_room",
+            "flag"
+          ]
+        },
+        "target": {
+          "type": "string",
+          "minLength": 1
+        },
+        "room_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "quest": {
+      "type": "object",
+      "required": [
+        "title",
+        "summary",
+        "giver",
+        "tier",
+        "offer_room",
+        "requires_flags",
+        "accept_label",
+        "accept_command",
+        "accept_message",
+        "objectives",
+        "turn_in_room",
+        "turn_in_label",
+        "turn_in_command",
+        "turn_in_message",
+        "reward_summary",
+        "reward_cred",
+        "reward_items",
+        "reward_flags",
+        "canon_refs"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "giver": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tier": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "offer_room": {
+          "type": "string",
+          "minLength": 1
+        },
+        "requires_flags": {
+          "$ref": "#/$defs/stringList"
+        },
+        "accept_label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "accept_command": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "accept_message": {
+          "type": "string",
+          "minLength": 1
+        },
+        "objectives": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/objective"
+          }
+        },
+        "turn_in_room": {
+          "type": "string",
+          "minLength": 1
+        },
+        "turn_in_label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "turn_in_command": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "turn_in_message": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reward_summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reward_flags": {
+          "$ref": "#/$defs/stringList"
+        },
+        "canon_refs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "reward_cred": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "reward_items": {
+          "type": "array",
+          "maxItems": 16,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "item_id",
+              "quantity"
+            ],
+            "properties": {
+              "item_id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 80
+              },
+              "quantity": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9999
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "x-beta-earth-asset-metadata": {
+    "asset_id": "BETAEARTH-SCHEMA-QUESTS",
+    "project_slug": "beta-earth-clean-rebuild",
+    "version": "0.4.11",
+    "status": "current",
+    "sensitivity": "public",
+    "tags": [
+      "beta-earth",
+      "schema",
+      "runtime-data",
+      "asset-metadata"
+    ]
+  }
+}

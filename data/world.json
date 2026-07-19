@@ -1,0 +1,256 @@
+{
+  "schema_version": "1.0",
+  "title": "Beta Earth: Sprawl 15 Awakening",
+  "start_room": "caroline_house",
+  "rooms": {
+    "caroline_house": {
+      "name": "Caroline's House",
+      "zone": "Sprawl 15",
+      "description": "A narrow refuge of patched walls, filtered lamps, and carefully saved objects. The house feels less like safety than a promise somebody has kept alive.",
+      "ambient": "Thin purple mist presses against the window while a dead tree scratches the siding like a patient signal.",
+      "danger": "safe",
+      "exits": {
+        "east": "front_threshold"
+      },
+      "canon_refs": [
+        "Land of Beta Earth.doc — Sprawl 15",
+        "Beta Earth Ultimate Edition 2025 Deep Research Report.docx — political-collapse/sprawl framework"
+      ],
+      "interactions": [
+        {
+          "id": "talk_caroline",
+          "label": "Talk to Caroline",
+          "command": "talk Caroline",
+          "description": "Let the person who found you explain where you woke up.",
+          "message": "Caroline studies you the way survivors study weather. ‘Sprawl 15 only looks dead from far away. Up close, everything is still deciding what it will become. Start by remembering that you belong to yourself.’",
+          "priority": 10,
+          "grants_flags": [
+            "met_caroline"
+          ],
+          "once": true
+        },
+        {
+          "id": "inspect_limiter",
+          "label": "Inspect your limiter",
+          "command": "inspect limiter",
+          "description": "Read the device seated behind your thoughts.",
+          "message": "The limiter reports a Default Initial Device at baseline synchronization. A Schrodinger Effect channel exists, but its deeper functions remain locked.",
+          "priority": 20,
+          "grants_flags": [
+            "inspected_did"
+          ],
+          "once": true
+        },
+        {
+          "id": "study_window",
+          "label": "Study the mist outside",
+          "command": "study window",
+          "description": "Read the first visible signs of Sprawl 15.",
+          "message": "Beyond the glass, purple mist thins around leafless trees and patched power lines. Poverty has not erased the place’s strange beauty.",
+          "priority": 30
+        },
+        {
+          "id": "debrief_first_route",
+          "label": "Debrief the lane with Caroline",
+          "command": "debrief lane with Caroline",
+          "description": "Ask how your first route fits the powers moving through Sprawl 15.",
+          "message": "Caroline taps three marks into the route: a fading U.F. seal, Syndicate paint, and a Guardian Angel cut through both. ‘That is the Balance of Power in miniature. Nobody owns the lane forever. They only change who pays for tomorrow.’",
+          "priority": 12,
+          "requires_flags": [
+            "trusted_by_caroline"
+          ],
+          "grants_flags": [
+            "debriefed_first_route"
+          ],
+          "once": true
+        }
+      ]
+    },
+    "front_threshold": {
+      "name": "Front Threshold",
+      "zone": "Sprawl 15",
+      "description": "The doorway divides Caroline's guarded interior from a lane whose ownership changes with every passing shadow.",
+      "ambient": "A low electrical hum travels through the mist, too regular to be weather and too distant to identify.",
+      "danger": "watchful",
+      "exits": {
+        "west": "caroline_house",
+        "east": "sprawl_crossroads"
+      },
+      "canon_refs": [
+        "Land of Beta Earth.doc — Sprawl territories and weak U.F. control"
+      ],
+      "interactions": [
+        {
+          "id": "listen_threshold",
+          "label": "Listen before stepping out",
+          "command": "listen threshold",
+          "description": "Pause and read the lane before committing to it.",
+          "message": "You separate three sounds: a barter bell to the north, a U.F. generator to the east, and something moving through the dead-tree lane to the south.",
+          "priority": 10,
+          "grants_flags": [
+            "read_threshold"
+          ],
+          "once": true
+        }
+      ]
+    },
+    "sprawl_crossroads": {
+      "name": "Sprawl 15 Crossroads",
+      "zone": "Sprawl 15",
+      "description": "Four battered routes meet beneath cables strung between dead trees. Hand-painted faction marks overlap until allegiance looks like static.",
+      "ambient": "The mist catches violet light from a cracked mineral shard embedded in the road.",
+      "danger": "uneasy",
+      "exits": {
+        "west": "front_threshold",
+        "north": "barter_store",
+        "east": "uf_waystation",
+        "south": "dead_tree_lane"
+      },
+      "canon_refs": [
+        "Land of Beta Earth.doc — Sprawl 15",
+        "Beta Earth Ultimate Edition 2025 Deep Research Report.docx — Between Worlds and obelisk/source motifs"
+      ],
+      "interactions": [
+        {
+          "id": "inspect_echo_shard",
+          "label": "Inspect the echo shard",
+          "command": "inspect echo shard",
+          "description": "Examine the mineral fragment humming beneath the road.",
+          "message": "The shard answers your touch with a second horizon: a place where bodies become data and identity can dissolve. The vision is gone before you can decide whether it was memory.",
+          "priority": 10,
+          "grants_flags": [
+            "heard_between_worlds"
+          ],
+          "once": true
+        },
+        {
+          "id": "read_faction_marks",
+          "label": "Read the faction marks",
+          "command": "read faction marks",
+          "description": "Identify which powers have claimed this crossing recently.",
+          "message": "Syndicate paint cuts across a faded U.F. seal. A Guardian Angel glyph has been carved through both. In Beta Earth, territory is an argument written on every surface.",
+          "priority": 20
+        }
+      ]
+    },
+    "barter_store": {
+      "name": "Sprawl 15 Barter Store",
+      "zone": "Sprawl 15",
+      "description": "A reinforced counter turns scavenged batteries, filter wraps, and rumors into the closest thing the lane has to an economy.",
+      "ambient": "A brass bell trembles whenever the pressure seal opens, even when nobody enters.",
+      "danger": "guarded",
+      "exits": {
+        "south": "sprawl_crossroads"
+      },
+      "canon_refs": [
+        "Gameplay Mechanics.doc — faction economies and mission progression",
+        "Land of Beta Earth.doc — rogue land and local power groups"
+      ],
+      "interactions": [
+        {
+          "id": "talk_trader",
+          "label": "Talk to the barter keeper",
+          "command": "talk barter keeper",
+          "description": "Ask what matters today in the lane economy.",
+          "message": "‘Power, water, filters, promises,’ the keeper says. ‘Everything else is decoration. The Balance of Power changes who collects tomorrow.’",
+          "priority": 10,
+          "grants_flags": [
+            "heard_bop_rumor"
+          ],
+          "once": true
+        },
+        {
+          "id": "inspect_se_device",
+          "label": "Inspect the SE-device case",
+          "command": "inspect SE device",
+          "description": "Study a locked case of Schrodinger Effect hardware.",
+          "message": "The case lists chance and experience gain as separate axes. Somebody has circled the words ‘sweet spot’ three times.",
+          "priority": 20,
+          "requires_flags": [
+            "inspected_did"
+          ],
+          "grants_flags": [
+            "saw_se_device"
+          ],
+          "once": true
+        }
+      ]
+    },
+    "uf_waystation": {
+      "name": "U.F. Waystation 15-C",
+      "zone": "Central District Fringe",
+      "description": "A compact United Federation station holds its ground through reinforced shutters, disciplined lighting, and numbers that never feel quite sufficient.",
+      "ambient": "A tactical board refreshes faction pressure in slow amber bars.",
+      "danger": "controlled",
+      "exits": {
+        "west": "sprawl_crossroads"
+      },
+      "canon_refs": [
+        "Faction Information and Classes.doc — United Federation / Security",
+        "Gameplay Mechanics.doc — Balance of Power and raid events"
+      ],
+      "interactions": [
+        {
+          "id": "read_bop_board",
+          "label": "Read the Balance of Power board",
+          "command": "read power board",
+          "description": "See how the faction war is shifting around Sprawl 15.",
+          "message": "The board shows no permanent victor—only pressure rates, stalled gains, and an invasion threshold. Every completed faction mission changes the slope.",
+          "priority": 10,
+          "grants_flags": [
+            "understands_bop"
+          ],
+          "once": true
+        },
+        {
+          "id": "talk_uf_officer",
+          "label": "Talk to the U.F. officer",
+          "command": "talk UF officer",
+          "description": "Ask what the Federation still controls here.",
+          "message": "The officer glances toward the Sprawl. ‘Control is the wrong word. We keep routes open, people breathing, and raids from becoming extinctions. Some days that is government.’",
+          "priority": 20
+        }
+      ]
+    },
+    "dead_tree_lane": {
+      "name": "Dead-Tree Lane",
+      "zone": "Sprawl 15",
+      "description": "The lane narrows between skeletal trees and collapsed service walls. It is quiet in the deliberate way of a place that expects violence.",
+      "ambient": "Fresh tracks cross older boot prints, then stop beside a wall with no visible door.",
+      "danger": "high",
+      "exits": {
+        "north": "sprawl_crossroads"
+      },
+      "canon_refs": [
+        "Land of Beta Earth.doc — Sprawl 15 visual identity",
+        "Guild Play and Tactics.doc — party awareness and tactical movement"
+      ],
+      "interactions": [
+        {
+          "id": "inspect_tracks",
+          "label": "Inspect the fresh tracks",
+          "command": "inspect tracks",
+          "description": "Read the lane without committing to a fight.",
+          "message": "The tracks belong to three people moving as one unit: point, support, rear guard. They turned back before reaching the crossroads. Something farther south made the decision for them.",
+          "priority": 10,
+          "grants_flags": [
+            "read_party_tracks"
+          ],
+          "once": true
+        },
+        {
+          "id": "mark_safe_return",
+          "label": "Mark the safe return route",
+          "command": "mark return route",
+          "description": "Use your limiter to preserve the path back to Caroline's house.",
+          "message": "Your limiter records the route through the crossroads and threshold. Navigation should prevent exploration from becoming hide-and-seek.",
+          "priority": 20,
+          "grants_flags": [
+            "marked_return_route"
+          ],
+          "once": true
+        }
+      ]
+    }
+  }
+}

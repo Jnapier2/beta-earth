@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.0",
+  "quests": {
+    "caroline_route_reading": {
+      "title": "Read the Lane",
+      "summary": "Trace a safe route from Caroline's house through Sprawl 15, read the threshold, and mark a dependable path home.",
+      "giver": "Caroline",
+      "tier": 1,
+      "offer_room": "caroline_house",
+      "requires_flags": [
+        "met_caroline"
+      ],
+      "accept_label": "Accept Caroline's route mission",
+      "accept_command": "accept route mission",
+      "accept_message": "Caroline sends the route to your limiter. ‘No hide-and-seek. The tracer will tell you where the next step lives, but you still have to read the danger yourself. Cross the threshold, listen, reach the crossroads, mark the return path in Dead-Tree Lane, then come back.’",
+      "objectives": [
+        {
+          "id": "cross_threshold",
+          "label": "Cross Caroline's threshold",
+          "description": "Step outside into the Front Threshold.",
+          "kind": "visit_room",
+          "target": "front_threshold",
+          "room_id": "front_threshold"
+        },
+        {
+          "id": "read_threshold",
+          "label": "Read the lane before moving on",
+          "description": "Listen at the threshold and separate the sounds of the lane.",
+          "kind": "flag",
+          "target": "read_threshold",
+          "room_id": "front_threshold"
+        },
+        {
+          "id": "reach_crossroads",
+          "label": "Reach the Sprawl 15 crossroads",
+          "description": "Travel to the crossroads and confirm the route remains open.",
+          "kind": "visit_room",
+          "target": "sprawl_crossroads",
+          "room_id": "sprawl_crossroads"
+        },
+        {
+          "id": "mark_return_route",
+          "label": "Mark the safe return route",
+          "description": "Use your limiter in Dead-Tree Lane to preserve the route home.",
+          "kind": "flag",
+          "target": "marked_return_route",
+          "room_id": "dead_tree_lane"
+        }
+      ],
+      "turn_in_room": "caroline_house",
+      "turn_in_label": "Report the route to Caroline",
+      "turn_in_command": "report route to Caroline",
+      "turn_in_message": "Caroline checks the route trace, then returns it with her own hazard marks layered over yours. ‘Good. A map is not safety, but it keeps fear from choosing your direction.’ Your limiter records her trust and keeps the route-tracer calibration.",
+      "reward_summary": "5 cred, a permanent Route-Tracer Calibration, Caroline’s trust, and a follow-up debrief on Sprawl 15’s Balance of Power.",
+      "reward_flags": [
+        "route_tracer_calibrated",
+        "trusted_by_caroline"
+      ],
+      "canon_refs": [
+        "Gameplay Mechanics.doc — Missions use a navigator/mission tracer to identify where to go and whom to speak to",
+        "Land of Beta Earth.doc — Sprawl 15 territory and visual identity",
+        "Gameplay Mechanics.doc — DID stored in the player's limiter"
+      ],
+      "reward_cred": 5,
+      "reward_items": [
+        {
+          "item_id": "route_tracer_calibration",
+          "quantity": 1
+        }
+      ]
+    }
+  }
+}

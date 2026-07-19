@@ -1,0 +1,180 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://beta-earth.local/schemas/economy.schema.json",
+  "title": "Beta Earth economy catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "items",
+    "barter_offers"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "items": {
+      "type": "object",
+      "minProperties": 1,
+      "maxProperties": 256,
+      "propertyNames": {
+        "pattern": "^[a-z0-9][a-z0-9_]*$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "description",
+          "category",
+          "canon_refs"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          },
+          "category": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          },
+          "canon_refs": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 32,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 300
+            }
+          }
+        }
+      }
+    },
+    "barter_offers": {
+      "type": "object",
+      "maxProperties": 128,
+      "propertyNames": {
+        "pattern": "^[a-z0-9][a-z0-9_]*$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "room_id",
+          "label",
+          "command",
+          "description",
+          "cost_cred",
+          "grants",
+          "requires_flags",
+          "once",
+          "priority",
+          "canon_refs"
+        ],
+        "properties": {
+          "room_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "command": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          },
+          "cost_cred": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000000
+          },
+          "grants": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 16,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "item_id",
+                "quantity"
+              ],
+              "properties": {
+                "item_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 80
+                },
+                "quantity": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 9999
+                }
+              }
+            }
+          },
+          "requires_flags": {
+            "type": "array",
+            "maxItems": 64,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 160
+            }
+          },
+          "once": {
+            "type": "boolean"
+          },
+          "priority": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 999
+          },
+          "canon_refs": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 32,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 300
+            }
+          }
+        }
+      }
+    }
+  },
+  "x-beta-earth-asset-metadata": {
+    "asset_id": "BETAEARTH-SCHEMA-ECONOMY",
+    "project_slug": "beta-earth-clean-rebuild",
+    "version": "0.4.11",
+    "status": "current",
+    "sensitivity": "public",
+    "tags": [
+      "beta-earth",
+      "schema",
+      "runtime-data",
+      "asset-metadata"
+    ]
+  }
+}
