@@ -1,5 +1,7 @@
 # Beta Earth
 
+[![CI](https://github.com/Jnapier2/beta-earth/actions/workflows/ci.yml/badge.svg)](https://github.com/Jnapier2/beta-earth/actions/workflows/ci.yml)
+
 Beta Earth is a local-first, browser-based role-playing game vertical slice built with Python's standard library. It demonstrates a cleanly layered game engine, validated content catalogs, revision-safe persistence, and a loopback-only HTTP interface without third-party runtime dependencies.
 
 ![Beta Earth gameplay interface](assets/beta-earth-gameplay.jpg)
@@ -65,4 +67,4 @@ Additional design context is available in [Architecture](docs/ARCHITECTURE.md), 
 
 This is a working single-player vertical slice, not a hosted service or a complete game. Multiplayer, internet hosting, combat, dynamic markets, and mutable equipment are outside the current scope. Save schema `4.0` remains the current format.
 
-Project authorship metadata: J. R. Napier / Beta Earth Project. Copyright is held by Gateway Information Group LLC. See [LICENSE.md](LICENSE.md) for terms.
+Created by J. R. Napier. Copyright is held by Gateway Information Group LLC. See [LICENSE.md](LICENSE.md) for terms.
