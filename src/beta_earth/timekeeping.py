@@ -26,7 +26,3 @@ def utc_now() -> datetime:
 
 def user_now() -> datetime:
     return utc_now().astimezone(USER_TIMEZONE)
-
-
-def user_timestamp_for_filename() -> str:
-    return user_now().strftime("%Y%m%d_%H%M%S")

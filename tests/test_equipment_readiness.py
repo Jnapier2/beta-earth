@@ -9,7 +9,7 @@ from beta_earth.presentation.view_models import snapshot_to_dict
 from .support import build_test_service, complete_route_mission
 
 
-class EquipmentReadinessPreviewV048Tests(unittest.TestCase):
+class EquipmentReadinessPreviewTests(unittest.TestCase):
     def setUp(self) -> None:
         self.temp = tempfile.TemporaryDirectory()
         self.service = build_test_service(Path(self.temp.name) / "players")

@@ -20,7 +20,7 @@ from beta_earth.timekeeping import USER_TIMEZONE, USER_TIMEZONE_SOURCE, user_now
 from .support import ROOT
 
 
-class HardeningV040Tests(unittest.TestCase):
+class SecurityHardeningTests(unittest.TestCase):
     def test_inventory_mapping_rejects_ambiguous_quantities(self) -> None:
         for value in (True, "1", -1, 10_000):
             with self.subTest(value=value), self.assertRaises(ValueError):

@@ -2,7 +2,7 @@
 
 Beta Earth is a local-first, browser-based role-playing game vertical slice built with Python's standard library. It demonstrates a cleanly layered game engine, validated content catalogs, revision-safe persistence, and a loopback-only HTTP interface without third-party runtime dependencies.
 
-![Beta Earth gameplay interface](assets/beta-earth-gameplay.png)
+![Beta Earth gameplay interface](assets/beta-earth-gameplay.jpg)
 
 Version `0.4.11` includes a six-room Sprawl 15 scenario, character setup, Caroline's guided route mission, wallet and inventory state, one accountable barter transaction, and a read-only DID readiness preview.
 
@@ -45,7 +45,7 @@ Runtime state is written only to ignored project-local folders such as `state/`,
 python -m unittest discover -s tests -t . -v
 ```
 
-The curated public suite covers domain validation, application transactions, migrations and persistence, loopback HTTP behavior, mission and economy flows, UI contracts, and startup resilience. See [Testing](docs/TESTING.md) for details.
+The suite covers domain validation, application transactions, migrations and persistence, loopback HTTP behavior, mission and economy flows, UI contracts, and startup resilience.
 
 ## Project map
 
@@ -63,6 +63,6 @@ Additional design context is available in [Architecture](docs/ARCHITECTURE.md), 
 
 ## Scope and status
 
-This repository is a portfolio edition of a working single-player vertical slice, not a hosted service or a complete game. Multiplayer, internet hosting, combat, dynamic markets, and mutable equipment are intentionally outside the current scope. Save schema `4.0` remains the current format.
+This is a working single-player vertical slice, not a hosted service or a complete game. Multiplayer, internet hosting, combat, dynamic markets, and mutable equipment are outside the current scope. Save schema `4.0` remains the current format.
 
 Project authorship metadata: J. R. Napier / Beta Earth Project. Copyright is held by Gateway Information Group LLC. See [LICENSE.md](LICENSE.md) for terms.

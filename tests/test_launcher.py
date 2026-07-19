@@ -8,7 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
-class LauncherDryRunV045Tests(unittest.TestCase):
+class LauncherTests(unittest.TestCase):
     def test_launcher_dry_run_validates_startup_without_serving_forever(self) -> None:
         completed = subprocess.run(
             [sys.executable, "-B", "run_beta_earth.py", "--dry-run", "--no-browser"],

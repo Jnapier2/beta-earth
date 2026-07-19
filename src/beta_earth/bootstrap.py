@@ -6,7 +6,6 @@ from dataclasses import dataclass
 from logging.handlers import RotatingFileHandler
 from pathlib import Path
 
-from beta_earth import __version__
 from beta_earth.application.service import GameService
 from beta_earth.infrastructure.economy_loader import JsonEconomyRepository
 from beta_earth.infrastructure.json_store import JsonPlayerRepository, SystemRandomSource
@@ -85,7 +84,3 @@ def build_service(paths: ProjectPaths | None = None) -> GameService:
         JsonPlayerRepository(resolved.state / "players"),
         SystemRandomSource(),
     )
-
-
-def runtime_info() -> dict[str, str]:
-    return {"name": "Beta Earth MUD Clean Rebuild", "version": __version__}

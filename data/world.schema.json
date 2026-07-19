@@ -152,18 +152,5 @@
         }
       }
     }
-  },
-  "x-beta-earth-asset-metadata": {
-    "asset_id": "BETAEARTH-SCHEMA-WORLD",
-    "project_slug": "beta-earth-clean-rebuild",
-    "version": "0.4.11",
-    "status": "current",
-    "sensitivity": "public",
-    "tags": [
-      "beta-earth",
-      "schema",
-      "runtime-data",
-      "asset-metadata"
-    ]
   }
 }
