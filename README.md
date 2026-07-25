@@ -35,7 +35,11 @@ On any supported Python environment, run:
 python run_beta_earth.py
 ```
 
-The program opens a browser to an OS-assigned loopback address. Press `Ctrl+C` in the terminal to stop it. To validate startup without opening a browser or keeping the server running:
+The program opens a browser to an OS-assigned loopback address. Press `Ctrl+C` in the terminal to stop it. To validate startup without opening a browser or keeping the server running, use either entry point:
+
+```powershell
+.\START_BETA_EARTH.bat --dry-run --no-browser
+```
 
 ```bash
 python run_beta_earth.py --dry-run --no-browser
@@ -49,7 +53,7 @@ Runtime state is written only to ignored project-local folders such as `state/`,
 python -m unittest discover -s tests -t . -v
 ```
 
-The suite covers domain validation, application transactions, migrations and persistence, loopback HTTP behavior, mission and economy flows, UI contracts, and startup resilience.
+The suite covers domain validation, application transactions, migrations and persistence, loopback HTTP behavior, mission and economy flows, UI contracts, and startup resilience. Hosted CI runs the suite and startup dry-run on Windows and Ubuntu across Python 3.11-3.13. This is source-portability evidence, not a claim that every named physical computer has completed acceptance testing.
 
 ## Project map
 
