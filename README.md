@@ -10,6 +10,15 @@ Beta Earth is a working, local-first browser RPG vertical slice built with Pytho
 
 Version `0.4.11` includes a six-room Sprawl 15 scenario, character setup, Caroline's guided route mission, wallet and inventory state, a barter flow, and a read-only equipment-readiness preview.
 
+## Release lineage
+
+- **Current public source authority:** `0.4.11`, plus later portability and CI hardening on `main`.
+- **Newer verified final awaiting source transfer:** **Beta Earth: Sovereignty `0.5.0`**.
+- **Recorded v0.5.0 evidence:** 81 tests plus CRC, rights, extraction, and release checks; recorded release SHA-256 `ea30ceb8a16566f0bcc20035360eba7bdeb8c8395e044d909ed99a2395e8f97b`.
+- **Promotion status:** blocked until the exact v0.5.0 archive is recovered, checksum-matched, audited, tested, and imported through [issue #5](https://github.com/Jnapier2/beta-earth/issues/5).
+
+The repository is intentionally not relabeled as v0.5.0 while those source bytes are unavailable. This makes the newer release visible without presenting an older tree as code it does not contain.
+
 ## Architecture and gameplay
 
 - **Layered design:** domain rules and models stay independent of application, infrastructure, and presentation adapters.
