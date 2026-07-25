@@ -67,4 +67,10 @@ Additional design context is available in [Architecture](docs/ARCHITECTURE.md), 
 
 This is a working single-player vertical slice, not a hosted service or a complete game. Multiplayer, internet hosting, combat, dynamic markets, and mutable equipment are outside the current scope. Save schema `4.0` remains the current format.
 
-Created by J. R. Napier. Copyright is held by Gateway Information Group LLC. See [LICENSE.md](LICENSE.md) for terms.
+## Portfolio and rights
+
+[Portfolio](https://jerry-napier-portfolio.netlify.app/) · [GitHub profile](https://github.com/Jnapier2)
+
+Created by Jerry R. Napier.
+
+Copyright © 2026 Gateway Information Group LLC. All rights reserved. See [LICENSE.md](LICENSE.md) for terms.
