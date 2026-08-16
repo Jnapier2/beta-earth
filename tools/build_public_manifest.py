@@ -54,6 +54,7 @@ def managed_paths() -> list[Path]:
             for path in (ROOT / directory).rglob("*")
             if path.is_file()
             and "__pycache__" not in path.parts
+            and not any(part.endswith(".egg-info") for part in path.parts)
             and path.suffix.casefold() not in {".pyc", ".pyo"}
         )
     paths.append(ROOT / "tools" / "export_diagnostics.py")
