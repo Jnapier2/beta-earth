@@ -134,7 +134,7 @@ def _security_and_drive_summary(project_root: Path) -> dict[str, Any]:
             norton["sha256"] = artifact.get("sha256") or norton.get("sha256")
         norton["exact_verification_record_status"] = verification.get("status")
     return {
-        "sensitivity": "project-internal",
+        "sensitivity": "local-support",
         "redaction": (
             "Character names/keys, commands, event payloads, credentials, tokens, cookies, "
             "absolute user paths, private endpoints, and connector identifiers are excluded."

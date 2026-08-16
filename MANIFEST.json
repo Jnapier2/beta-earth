@@ -291,8 +291,8 @@
     },
     {
       "path": "src/beta_earth/application/diagnostics.py",
-      "size_bytes": 44772,
-      "sha256": "d267b3db67ecad6de27b0b4e0ed1b60db100923d02d2dc67caa9917cf8a2fc4e",
+      "size_bytes": 44769,
+      "sha256": "c3327b18d3aba77654d74373f7f5609e8c1f7655489dbe383b5d392d0a6c310f",
       "package_managed": true
     },
     {
