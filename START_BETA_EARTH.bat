@@ -1,12 +1,7 @@
 @echo off
+rem Asset-ID: BE-NEXT-LEGACY-WINDOWS-LAUNCHER-ALIAS | Version: 0.50.0 | Status: compatibility-alias.
 rem Copyright © 2026 Gateway Information Group LLC. All rights reserved.
-setlocal
-pushd "%~dp0" >nul 2>nul
-if errorlevel 1 (
-    echo Could not enter the Beta Earth project folder.
-    endlocal & exit /b 3
-)
-call "tools\invoke_supported_python.cmd" "run_beta_earth.py" %*
-set "RC=%ERRORLEVEL%"
-popd
-endlocal & exit /b %RC%
+setlocal EnableExtensions DisableDelayedExpansion
+set "BETA_EARTH_INVOKED_ENTRYPOINT=START_BETA_EARTH.bat"
+call "%~dp0BetaEarthSovereignty.bat" %*
+exit /b %errorlevel%

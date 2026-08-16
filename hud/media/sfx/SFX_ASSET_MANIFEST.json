@@ -1,0 +1,97 @@
+{
+  "metadata_schema": "asset-metadata-v1.1-rights",
+  "asset_id": "BE-NEXT-THEMATIC-UI-SFX-ASSET-SET",
+  "title": "Beta Earth Thematic Interface Feedback Sounds",
+  "version": "0.47.0",
+  "source": "deterministic first-party synthesis",
+  "third_party_samples": false,
+  "network_required": false,
+  "default_sfx_volume_percent": 24,
+  "assets": [
+    {
+      "filename": "signal-tick.wav",
+      "title": "Signal Tick",
+      "purpose": "Light control activation",
+      "duration_seconds": 0.06,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "sample_width_bits": 16,
+      "peak_normalized": 0.212915,
+      "size_bytes": 5804,
+      "sha256": "e69e89bd07d46562c02f715e7f1a991df918f48e02388d4871538e9b3537412f"
+    },
+    {
+      "filename": "signal-select.wav",
+      "title": "Route Select",
+      "purpose": "Tab, route, and navigation acknowledgement",
+      "duration_seconds": 0.115,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "sample_width_bits": 16,
+      "peak_normalized": 0.283877,
+      "size_bytes": 11084,
+      "sha256": "b71dc55e3e64a6fa3908f7cf75bbbf4de57dbd4baaaec82ec2d67298203e0e40"
+    },
+    {
+      "filename": "signal-confirm.wav",
+      "title": "Sovereignty Confirm",
+      "purpose": "Objective, level, and major success feedback",
+      "duration_seconds": 0.3,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "sample_width_bits": 16,
+      "peak_normalized": 0.150141,
+      "size_bytes": 28844,
+      "sha256": "cafea158ecd0f5aa2c17708ca17ca24fa11bfe142074888e837fe26eb8827713"
+    },
+    {
+      "filename": "signal-warning.wav",
+      "title": "Integrity Warning",
+      "purpose": "Damage, injury, and elevated-risk feedback",
+      "duration_seconds": 0.27,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "sample_width_bits": 16,
+      "peak_normalized": 0.166713,
+      "size_bytes": 25964,
+      "sha256": "36b0e927a94b324cf5e930a50dbc27a2af223e05d3f8ed0a521f988814fa1db4"
+    },
+    {
+      "filename": "signal-error.wav",
+      "title": "Command Rejection",
+      "purpose": "Invalid command or local HUD error feedback",
+      "duration_seconds": 0.235,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "sample_width_bits": 16,
+      "peak_normalized": 0.15385,
+      "size_bytes": 22604,
+      "sha256": "1ed40494d4e207e46e25e371eaadc572bb8ed6d23d0e9fc9d7e4f0fd7eba9142"
+    },
+    {
+      "filename": "signal-impact.wav",
+      "title": "Field Impact",
+      "purpose": "Light combat-impact feedback",
+      "duration_seconds": 0.125,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "sample_width_bits": 16,
+      "peak_normalized": 0.200788,
+      "size_bytes": 12044,
+      "sha256": "15f36df9a60be5e68a39cc6c2e951b3bd945b9f4535bf016ca922dc0e2f9b092"
+    },
+    {
+      "filename": "signal-recovery.wav",
+      "title": "Recovery Signal",
+      "purpose": "Healing and stabilization feedback",
+      "duration_seconds": 0.32,
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "sample_width_bits": 16,
+      "peak_normalized": 0.169307,
+      "size_bytes": 30764,
+      "sha256": "73ba30ffca2815f9c2ca949f66054b7f9a1d742f884387b91525d1c7cd0a14b4"
+    }
+  ],
+  "copyright": "Copyright © 2026 Gateway Information Group LLC. All rights reserved."
+}

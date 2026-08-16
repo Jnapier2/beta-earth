@@ -1,1 +1,1 @@
-"""Application use-cases and ports."""
+"""Use cases and command interpretation."""

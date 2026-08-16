@@ -1,0 +1,1152 @@
+<!doctype html>
+<!--
+Asset-ID: BE-NEXT-HUD-INDEX
+Version: 0.51.1
+Copyright © 2026 Gateway Information Group LLC. All rights reserved.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#070b13">
+  <meta name="beta-earth-token" content="__BE_SESSION_TOKEN__">
+  <meta name="description" content="Local first-party command HUD for Beta Earth: Sovereignty Next.">
+  <title>Beta Earth: Sovereignty Next — Command HUD</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#command-input">Skip to command input</a>
+  <a class="skip-link skip-link-secondary" href="#transcript">Skip to world feed</a>
+
+  <div class="startup-screen" id="startup-screen" role="dialog" aria-modal="true" aria-labelledby="startup-title">
+    <div class="startup-grid" aria-hidden="true"></div>
+    <main class="startup-card">
+      <div class="startup-mark" aria-hidden="true">
+        <span>BE</span>
+      </div>
+      <p class="eyebrow">SOVEREIGNTY // PRIVATE SESSION</p>
+      <h1 id="startup-title">Enter Beta Earth</h1>
+      <p class="startup-copy">Open an existing character or begin a new field record. Your state remains on this computer and saves after every meaningful action.</p>
+      <p class="startup-copy"><strong>Player-owned by default:</strong> Balanced and Guard make Sol protect and create reliable openings for you. Selecting Assault explicitly authorizes maximum damage and an occasional Sol finish.</p>
+      <form id="session-form" autocomplete="off">
+        <label for="player-name">Character name</label>
+        <div class="startup-input-row">
+          <input id="player-name" name="player" maxlength="40" placeholder="Who crosses the threshold?" required autofocus>
+          <button class="primary-button" type="submit">
+            <span>Enter Beta Earth</span>
+            <span aria-hidden="true">→</span>
+          </button>
+        </div>
+        <p class="form-message" id="startup-message" role="alert"></p>
+      </form>
+      <div class="startup-assurances">
+        <span>● Stays on this computer</span>
+        <span>● Automatic saves</span>
+        <span>● No account required</span>
+      </div>
+    </main>
+  </div>
+
+  <div class="onboarding-screen" id="onboarding-screen" role="dialog" aria-modal="true" aria-labelledby="onboarding-title" hidden>
+    <main class="onboarding-card">
+      <header class="onboarding-header">
+        <div>
+          <p class="eyebrow">CHARACTER FOUNDATION // AUTOSAVED</p>
+          <h1 id="onboarding-title">Choose how you enter Beta Earth</h1>
+          <p>Preview freely. Nothing becomes final until the last confirmation.</p>
+        </div>
+        <div class="setup-progress" aria-label="Setup progress">
+          <span class="active" data-step-dot="1">1</span>
+          <i></i>
+          <span data-step-dot="2">2</span>
+          <i></i>
+          <span data-step-dot="3">3</span>
+        </div>
+      </header>
+
+      <section class="setup-step" data-setup-step="1" aria-labelledby="class-step-heading">
+        <div class="setup-step-heading">
+          <span>STEP 1 OF 3</span>
+          <h2 id="class-step-heading">Class &amp; story route</h2>
+          <p>Your class changes training costs and points the story toward a faction contact. It does not join that faction for you.</p>
+        </div>
+        <label class="class-select-label" for="class-select">
+          <span>Choose a class</span>
+          <select id="class-select">
+            <option value="">Select a class…</option>
+          </select>
+        </label>
+        <article class="class-preview" id="class-preview" aria-live="polite">
+          <span class="class-preview-tag">NO CLASS SELECTED</span>
+          <h3 id="class-preview-name">Find your play style</h3>
+          <p id="class-preview-summary">Choose from fifteen distinct Beta Earth classes. U.F. Soldier is marked as the beginner-friendly starting point.</p>
+          <dl>
+            <div><dt>Role</dt><dd id="class-preview-role">—</dd></div>
+            <div><dt>Difficulty</dt><dd id="class-preview-difficulty">—</dd></div>
+            <div><dt>Route</dt><dd id="class-preview-route">Membership unassigned</dd></div>
+          </dl>
+          <p class="tradeoff-copy"><strong>Tradeoff:</strong> <span id="class-preview-tradeoff">Choose a class to see its strengths and limits.</span></p>
+        </article>
+      </section>
+
+      <section class="setup-step" data-setup-step="2" aria-labelledby="stats-step-heading" hidden>
+        <div class="setup-step-heading">
+          <span>STEP 2 OF 3</span>
+          <h2 id="stats-step-heading">Starting stats</h2>
+          <p>Recommended and manual builds use the same weighted budget. Combat Skill costs more because each point has a larger mechanical effect.</p>
+        </div>
+        <div class="allocation-controls">
+          <button class="choice-button active" id="use-recommended-build" type="button">
+            <strong>Use class recommendation</strong>
+            <small>Fast, balanced for the selected role</small>
+          </button>
+          <button class="choice-button" id="use-manual-build" type="button">
+            <strong>Allocate manually</strong>
+            <small>Exact control with the same budget</small>
+          </button>
+        </div>
+        <div class="budget-readout" aria-live="polite">
+          <span>WEIGHTED BUDGET</span>
+          <strong id="setup-budget">0 / 0 spent</strong>
+          <div class="meter setup-budget-meter" role="progressbar" aria-label="Stat allocation budget" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <span></span>
+          </div>
+        </div>
+        <div class="stat-allocation-list" id="stat-allocation-list"></div>
+      </section>
+
+      <section class="setup-step" data-setup-step="3" aria-labelledby="guidance-step-heading" hidden>
+        <div class="setup-step-heading">
+          <span>STEP 3 OF 3</span>
+          <h2 id="guidance-step-heading">Guidance &amp; review</h2>
+          <p>Guided Start is optional, grants no reward, and can be paused or restarted later.</p>
+        </div>
+        <div class="guidance-options" role="group" aria-label="Tutorial preference">
+          <button class="choice-button" id="choose-guided-start" type="button">
+            <strong>Guided Start</strong>
+            <small>Contextual steps while you play</small>
+          </button>
+          <button class="choice-button" id="choose-free-start" type="button">
+            <strong>Explore Freely</strong>
+            <small>No tutorial and no penalty</small>
+          </button>
+        </div>
+        <article class="foundation-review">
+          <p class="panel-kicker">FINAL REVIEW</p>
+          <h3 id="review-class">Class not selected</h3>
+          <p id="review-route">Faction membership remains unassigned.</p>
+          <div id="review-stats" class="review-stats"></div>
+          <p id="review-guidance">Choose a guidance preference.</p>
+        </article>
+        <p class="form-message" id="onboarding-message" role="alert"></p>
+      </section>
+
+      <footer class="onboarding-actions">
+        <button class="quiet-button" id="setup-back" type="button" hidden>← Back</button>
+        <span id="setup-save-status">Every choice is saved locally.</span>
+        <button class="primary-button" id="setup-next" type="button">Continue →</button>
+        <button class="primary-button" id="setup-confirm" type="button" hidden disabled>Confirm &amp; enter →</button>
+      </footer>
+    </main>
+  </div>
+
+  <section class="intro-audio-dock" id="intro-audio-dock" aria-label="Intro music and interface sound controls">
+    <audio id="intro-music" preload="metadata" loop>
+      <source src="/media/field-signal.wav" type="audio/wav">
+    </audio>
+    <div class="intro-audio-copy intro-music-copy">
+      <span class="intro-audio-kicker">INTRO MUSIC</span>
+      <strong id="intro-music-title">Field Signal</strong>
+      <small id="intro-music-status" aria-live="polite">Ready — begins after your first interaction</small>
+    </div>
+    <div class="intro-audio-controls intro-music-controls" role="group" aria-label="Intro music controls">
+      <button class="intro-audio-button" id="intro-music-toggle" type="button" aria-pressed="false" aria-label="Play intro music">
+        <span id="intro-music-toggle-icon" aria-hidden="true">▶</span>
+        <span id="intro-music-toggle-label">Play</span>
+      </button>
+      <button class="intro-audio-button" id="intro-music-mute" type="button" aria-pressed="false" aria-label="Mute intro music">
+        <span id="intro-music-mute-icon" aria-hidden="true">◖</span>
+        <span id="intro-music-mute-label">Mute</span>
+      </button>
+      <label class="intro-volume-control" for="intro-music-volume">
+        <span>Music volume</span>
+        <input id="intro-music-volume" type="range" min="0" max="100" step="1" value="35" aria-valuemin="0" aria-valuemax="100" aria-valuenow="35">
+        <output id="intro-music-volume-value" for="intro-music-volume">35%</output>
+      </label>
+    </div>
+    <div class="intro-audio-copy intro-sfx-copy">
+      <span class="intro-audio-kicker">FIELD EFFECTS</span>
+      <strong>Signal feedback</strong>
+      <small id="intro-sfx-status" aria-live="polite">Light interactions and gameplay feedback · 24%</small>
+    </div>
+    <div class="intro-audio-controls intro-sfx-controls" role="group" aria-label="Interface effect controls">
+      <button class="intro-audio-button" id="intro-sfx-preview" type="button" data-sfx-silent aria-label="Preview interface effects">
+        <span aria-hidden="true">◇</span><span>Preview</span>
+      </button>
+      <button class="intro-audio-button" id="intro-sfx-mute" type="button" aria-pressed="false" aria-label="Mute interface effects">
+        <span id="intro-sfx-mute-icon" aria-hidden="true">◖</span>
+        <span id="intro-sfx-mute-label">Mute</span>
+      </button>
+      <label class="intro-volume-control" for="intro-sfx-volume">
+        <span>Effects volume</span>
+        <input id="intro-sfx-volume" type="range" min="0" max="100" step="1" value="24" aria-valuemin="0" aria-valuemax="100" aria-valuenow="24">
+        <output id="intro-sfx-volume-value" for="intro-sfx-volume">24%</output>
+      </label>
+    </div>
+  </section>
+
+  <div class="hud-shell" id="hud-shell" hidden>
+    <header class="topbar">
+      <div class="brand-block">
+        <div class="brand-glyph" aria-hidden="true"><span>BE</span></div>
+        <div>
+          <p class="brand-title">BETA EARTH</p>
+          <p class="brand-subtitle">SOVEREIGNTY // FIELD HUD</p>
+        </div>
+      </div>
+
+      <div class="location-telemetry" aria-live="polite">
+        <span class="telemetry-label">CURRENT POSITION</span>
+        <strong id="top-location">Link pending</strong>
+      </div>
+
+      <div class="topbar-actions">
+        <div class="sync-status" id="sync-status" title="Save status">
+          <span class="sync-dot" aria-hidden="true"></span>
+          <span id="sync-label">LOCAL</span>
+          <small id="revision-label">SAVE —</small>
+        </div>
+        <button class="topbar-button" id="command-palette-toggle" type="button" aria-haspopup="dialog" aria-expanded="false" title="Open the command palette (Ctrl+K)">
+          <span aria-hidden="true">⌘</span><span>Commands</span>
+        </button>
+        <button class="topbar-button" id="hud-settings-toggle" type="button" aria-haspopup="dialog" aria-expanded="false" title="HUD layout and readability controls">
+          <span aria-hidden="true">◫</span><span>HUD</span><small id="hud-preset-label">Guided</small>
+        </button>
+        <button class="topbar-button drawer-toggle left-drawer-toggle" id="left-rail-toggle" type="button" aria-controls="left-rail" aria-expanded="false" title="Open character status and navigation">
+          <span aria-hidden="true">◈</span><span>Status</span>
+        </button>
+        <button class="topbar-button drawer-toggle right-drawer-toggle" id="right-rail-toggle" type="button" aria-controls="right-rail" aria-expanded="false" title="Open combat, inventory, and journey tools">
+          <span aria-hidden="true">▦</span><span>Toolkit</span>
+        </button>
+        <button class="icon-button danger-quiet" id="quit-button" type="button" title="Save and quit">
+          <span aria-hidden="true">⏻</span><span class="sr-only">Save and quit</span>
+        </button>
+      </div>
+    </header>
+
+    <div class="hud-scrim" id="hud-scrim" hidden></div>
+
+    <aside class="hud-settings-sheet" id="hud-settings-sheet" role="dialog" aria-modal="false" aria-labelledby="hud-settings-heading" hidden>
+      <header class="sheet-header">
+        <div>
+          <p class="panel-kicker">PLAYER-OWNED INTERFACE</p>
+          <h2 id="hud-settings-heading">HUD control center</h2>
+          <p>Change presentation only. No setting changes rewards, difficulty, story state, or saved character progress.</p>
+        </div>
+        <button class="icon-button" id="hud-settings-close" type="button" aria-label="Close HUD controls">×</button>
+      </header>
+
+      <section class="settings-section" aria-labelledby="preset-heading">
+        <div class="settings-heading-row">
+          <div><span>LAYOUT PRESETS</span><h3 id="preset-heading">Choose your field view</h3></div>
+          <small>Saved locally</small>
+        </div>
+        <div class="preset-grid" role="radiogroup" aria-label="HUD layout preset">
+          <button type="button" class="preset-option" data-hud-preset="guided" role="radio" aria-checked="true"><strong>Guided</strong><small>Objective-first, progressive disclosure</small></button>
+          <button type="button" class="preset-option" data-hud-preset="tactical" role="radio" aria-checked="false"><strong>Tactical</strong><small>Combat, Sol, and recovery prioritized</small></button>
+          <button type="button" class="preset-option" data-hud-preset="reading" role="radio" aria-checked="false"><strong>Reading</strong><small>Wide world feed with minimal rails</small></button>
+          <button type="button" class="preset-option" data-hud-preset="full" role="radio" aria-checked="false"><strong>Explorer</strong><small>All panels and previews available</small></button>
+        </div>
+      </section>
+
+      <section class="settings-section" aria-labelledby="module-heading">
+        <div class="settings-heading-row"><div><span>VISIBLE MODULES</span><h3 id="module-heading">Keep only what helps</h3></div><small>Customizable</small></div>
+        <div class="module-grid">
+          <label><input type="checkbox" data-module-toggle="character" aria-label="Character module" checked><span><strong>Character</strong><small>Health, level, build, load</small></span></label>
+          <label><input type="checkbox" data-module-toggle="navigation" aria-label="Navigation module" checked><span><strong>Navigation</strong><small>Exits, known places, routes</small></span></label>
+          <label><input type="checkbox" data-module-toggle="combat" aria-label="Combat module" checked><span><strong>Combat</strong><small>Target, Sol, stance, abilities</small></span></label>
+          <label><input type="checkbox" data-module-toggle="inventory" aria-label="Inventory module" checked><span><strong>Inventory</strong><small>Equipment, economy, carried items</small></span></label>
+          <label><input type="checkbox" data-module-toggle="progress" aria-label="Journey module" checked><span><strong>Journey</strong><small>Foundation, journal, playtest tools</small></span></label>
+        </div>
+      </section>
+
+      <section class="settings-section" aria-labelledby="audio-heading">
+        <div class="settings-heading-row">
+          <div><span>AUDIO FEEDBACK</span><h3 id="audio-heading">Hear only what helps</h3></div>
+          <small>Saved locally</small>
+        </div>
+        <div class="audio-settings-card">
+          <div class="audio-settings-copy">
+            <strong>Thematic field effects</strong>
+            <small id="settings-sfx-status" aria-live="polite">Light interactions and gameplay feedback · 24%</small>
+          </div>
+          <div class="audio-settings-actions" role="group" aria-label="Interface effect controls">
+            <button class="quiet-button" id="settings-sfx-preview" type="button" data-sfx-silent>Preview effects</button>
+            <button class="quiet-button" id="settings-sfx-mute" type="button" aria-pressed="false"><span id="settings-sfx-mute-label">Mute effects</span></button>
+          </div>
+          <label class="settings-volume-control" for="settings-sfx-volume">
+            <span>Effects volume</span>
+            <input id="settings-sfx-volume" type="range" min="0" max="100" step="1" value="24" aria-valuemin="0" aria-valuemax="100" aria-valuenow="24">
+            <output id="settings-sfx-volume-value" for="settings-sfx-volume">24%</output>
+          </label>
+        </div>
+        <div class="information-toggles audio-category-toggles">
+          <label><input id="sfx-interaction-toggle" type="checkbox" aria-label="Play interaction sounds" checked><span><strong>Interaction sounds</strong><small>Subtle clicks for deliberate controls, tabs, and selections. No hover noise.</small></span></label>
+          <label><input id="sfx-feedback-toggle" type="checkbox" aria-label="Play gameplay feedback sounds" checked><span><strong>Gameplay feedback</strong><small>Light cues for impact, recovery, warnings, objective progress, and errors.</small></span></label>
+        </div>
+        <p class="audio-boundary-note">Effects are presentation-only, never automate an action, and never enter character save data.</p>
+      </section>
+
+      <section class="settings-section" aria-labelledby="readability-heading">
+        <div class="settings-heading-row"><div><span>READABILITY</span><h3 id="readability-heading">Display and motion</h3></div></div>
+        <div class="display-control-grid">
+          <button id="density-toggle" type="button" aria-pressed="false"><strong>Density</strong><small>Comfortable</small></button>
+          <button id="contrast-toggle" type="button" aria-pressed="false"><strong>Contrast</strong><small>Standard</small></button>
+          <button id="text-scale-toggle" type="button" aria-label="Text scale: 100 percent"><strong>Text size</strong><small id="text-scale-label">100%</small></button>
+          <button id="motion-toggle" type="button" aria-pressed="false"><strong>Motion</strong><small>Full</small></button>
+        </div>
+        <div class="information-toggles">
+          <label><input id="command-echo-toggle" type="checkbox" aria-label="Show command echo" checked><span><strong>Show command echo</strong><small>Keep entered commands in the transcript.</small></span></label>
+          <label><input id="locked-preview-toggle" type="checkbox" aria-label="Preview locked options"><span><strong>Preview locked options</strong><small>Show unavailable story choices and advanced locked systems.</small></span></label>
+        </div>
+      </section>
+
+      <footer class="sheet-footer">
+        <button class="quiet-button" id="hud-reset" type="button">Reset HUD</button>
+        <span>Saved locally. Network sync is not used. Shortcuts: <kbd>Ctrl</kbd>+<kbd>K</kbd> commands · <kbd>[</kbd> status · <kbd>]</kbd> toolkit · <kbd>Esc</kbd> close</span>
+      </footer>
+    </aside>
+
+    <section class="command-palette" id="command-palette" role="dialog" aria-modal="true" aria-labelledby="command-palette-heading" hidden>
+      <header class="palette-header">
+        <div><p class="panel-kicker">COMMAND ACCESS</p><h2 id="command-palette-heading">Find an exact action</h2></div>
+        <button class="icon-button" id="command-palette-close" type="button" aria-label="Close command palette">×</button>
+      </header>
+      <label class="palette-search" for="command-palette-input"><span class="sr-only">Search commands</span><input id="command-palette-input" autocomplete="off" placeholder="Search actions, routes, inventory, Sol…"></label>
+      <div class="palette-results" id="command-palette-results" role="listbox" aria-label="Available commands"></div>
+      <footer><span><kbd>↑</kbd><kbd>↓</kbd> select</span><span><kbd>Enter</kbd> run</span><span><kbd>Esc</kbd> close</span></footer>
+    </section>
+
+    <main class="hud-grid">
+      <aside class="left-rail" id="left-rail" aria-label="Character and navigation">
+        <div class="drawer-header left-drawer-header">
+          <span>STATUS &amp; NAVIGATION</span>
+          <button class="icon-button" id="left-rail-close" type="button" aria-label="Close status drawer">×</button>
+        </div>
+        <section class="panel character-panel" aria-labelledby="character-heading">
+          <header class="panel-header">
+            <div>
+              <p class="panel-kicker">FIELD RECORD</p>
+              <h2 id="character-heading">Character Status</h2>
+            </div>
+            <span class="level-badge" id="character-level">L1</span>
+          </header>
+
+          <div class="character-identity">
+            <div class="portrait-placeholder" aria-hidden="true">
+              <span id="portrait-initials">BE</span>
+              <i></i>
+            </div>
+            <div>
+              <strong id="character-name">Unknown</strong>
+              <span id="character-class">Foundation pending</span>
+              <small id="character-route">Faction route unassigned</small>
+              <small id="character-profile">Training path pending</small>
+              <small id="character-posture">Guarded · Balanced</small>
+            </div>
+          </div>
+
+          <div class="vital-block">
+            <div class="meter-heading">
+              <span>Integrity</span>
+              <strong id="health-value">— / —</strong>
+            </div>
+            <div class="meter health-meter" role="progressbar" aria-label="Health" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <span id="health-fill"></span>
+              <i class="meter-grid"></i>
+            </div>
+          </div>
+
+          <div class="mini-stat-grid">
+            <div><span>STR</span><strong id="stat-strength">—</strong></div>
+            <div><span>AGI</span><strong id="stat-agility">—</strong></div>
+            <div><span>PER</span><strong id="stat-perception">—</strong></div>
+            <div><span>COM</span><strong id="stat-combat">—</strong></div>
+          </div>
+          <details class="stat-explainer">
+            <summary>What do my stats affect?</summary>
+            <div id="stat-effect-list"></div>
+          </details>
+
+          <div class="resource-row">
+            <div>
+              <span>Field insight</span>
+              <strong id="field-insight">0</strong>
+            </div>
+            <div>
+              <span>Absorbed</span>
+              <strong id="absorbed-insight">0</strong>
+            </div>
+          </div>
+          <div class="level-progress">
+            <div class="meter-heading">
+              <span>Next level</span>
+              <strong id="level-progress-value">0 / 100 learned</strong>
+            </div>
+            <div class="meter level-meter" role="progressbar" aria-label="Progress to next level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <span id="level-progress-fill"></span>
+            </div>
+            <small id="level-progress-note">No insight awaiting absorption.</small>
+          </div>
+
+          <div class="load-block">
+            <div class="meter-heading">
+              <span>Carried load</span>
+              <strong id="load-value">0 / 0</strong>
+            </div>
+            <div class="meter load-meter" role="progressbar" aria-label="Carried load" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <span id="load-fill"></span>
+            </div>
+            <small id="load-tier">Comfortable</small>
+          </div>
+
+          <div class="condition-list" id="condition-list" aria-label="Active conditions"></div>
+        </section>
+
+        <section class="panel navigation-panel" aria-labelledby="navigation-heading">
+          <header class="panel-header">
+            <div>
+              <p class="panel-kicker">SPATIAL MEMORY</p>
+              <h2 id="navigation-heading">Navigation</h2>
+            </div>
+            <span class="panel-count" id="visited-count">0 / 0</span>
+          </header>
+
+          <div class="compass-grid" id="compass-grid" aria-label="Available exits">
+            <button data-direction="northwest" aria-label="Go northwest">NW</button>
+            <button data-direction="north" aria-label="Go north">N</button>
+            <button data-direction="northeast" aria-label="Go northeast">NE</button>
+            <button data-direction="west" aria-label="Go west">W</button>
+            <div class="compass-core" aria-hidden="true"><span></span></div>
+            <button data-direction="east" aria-label="Go east">E</button>
+            <button data-direction="southwest" aria-label="Go southwest">SW</button>
+            <button data-direction="south" aria-label="Go south">S</button>
+            <button data-direction="southeast" aria-label="Go southeast">SE</button>
+          </div>
+
+          <div class="vertical-exits" id="vertical-exits">
+            <button data-direction="up"><span aria-hidden="true">↑</span> UP</button>
+            <button data-direction="down"><span aria-hidden="true">↓</span> DOWN</button>
+            <button data-direction="out"><span aria-hidden="true">↗</span> OUT</button>
+          </div>
+
+          <div class="known-places">
+            <div class="subhead-row">
+              <h3>Known places</h3>
+              <button class="text-button" type="button" data-command="route">Full map</button>
+            </div>
+            <div class="place-list" id="place-list"></div>
+          </div>
+
+          <form class="route-form" id="route-form">
+            <label for="route-input">Route to a known place</label>
+            <div>
+              <input id="route-input" placeholder="Location name">
+              <button type="submit" aria-label="Find route">⌁</button>
+            </div>
+          </form>
+        </section>
+      </aside>
+
+      <section class="center-stage" aria-label="World and command console">
+        <section class="focus-ribbon" id="focus-ribbon" aria-labelledby="focus-objective" aria-live="polite">
+          <div class="focus-objective-block">
+            <span id="focus-context-label">NEXT MEANINGFUL STEP</span>
+            <strong id="focus-objective">Review your current objective</strong>
+            <small id="focus-objective-why">One exact action is always available without surrendering player choice.</small>
+            <small id="focus-after-contact" hidden></small>
+          </div>
+          <section class="focus-coaching" id="focus-coaching" aria-labelledby="focus-coaching-title" hidden>
+            <span id="focus-coaching-label">OPTIONAL COACHING</span>
+            <strong id="focus-coaching-title">Look restores room context</strong>
+            <small id="focus-coaching-why">Reward-free guidance remains secondary to your chosen objective.</small>
+            <button class="quiet-button" id="focus-coaching-action" type="button">Look</button>
+          </section>
+          <div class="focus-action-stack" aria-label="Immediate actions">
+            <button class="focus-action" id="focus-action" type="button">Next</button>
+            <button class="focus-secondary-action" id="focus-secondary-action" type="button" hidden>Cancel</button>
+          </div>
+          <div class="focus-vitals" aria-label="Critical field status">
+            <button type="button" class="focus-chip" data-focus-kind="health" data-command="health"><span>Integrity</span><strong id="focus-health">— / —</strong></button>
+            <div class="focus-chip" data-focus-kind="recovery"><span>Recovery</span><strong id="focus-recovery">Ready</strong></div>
+            <button type="button" class="focus-chip" data-focus-kind="injury" data-command="injury"><span>Body</span><strong id="focus-injury">Stable</strong></button>
+            <button type="button" class="focus-chip" data-focus-kind="sol" id="focus-sol-button"><span>Sol</span><strong id="focus-sol">Balanced</strong></button>
+            <button type="button" class="focus-chip" data-focus-kind="target" id="focus-target-button"><span>Target</span><strong id="focus-target">Area clear</strong></button>
+          </div>
+        </section>
+
+        <section class="panel world-panel" aria-labelledby="world-heading">
+          <div class="world-header">
+            <div>
+              <p class="panel-kicker" id="room-id-label">WORLDSPACE // —</p>
+              <h1 id="world-heading">Awaiting field link</h1>
+              <p id="room-description">Open a character to enter Beta Earth.</p>
+            </div>
+            <div class="world-tags" id="facility-list" aria-label="Local facilities"></div>
+          </div>
+
+          <div class="hazard-banner" id="hazard-banner" hidden role="status" aria-live="polite">
+            <div><span>ENVIRONMENTAL HAZARD</span><strong id="hazard-name">Hazard</strong></div>
+            <p id="hazard-summary">Prepare suitable protection before crossing.</p>
+            <small id="world-cycle">WORLD CYCLE // —</small>
+          </div>
+
+          <aside class="directive-strip" id="directive-strip" aria-labelledby="directive-title" hidden>
+            <details class="directive-disclosure" id="directive-disclosure">
+              <summary>
+                <span class="directive-marker" aria-hidden="true">◇</span>
+                <span class="directive-summary-copy">
+                  <strong id="directive-summary-title">Objective details &amp; choices</strong>
+                  <small>Expand for story context, progress, and available choices.</small>
+                </span>
+                <span class="directive-summary-progress" id="directive-summary-progress">Review</span>
+              </summary>
+              <div class="directive-expanded">
+                <div class="directive-copy">
+                  <span id="directive-tag">CURRENT DIRECTIVE</span>
+                  <h2 id="directive-title">No active directive</h2>
+                  <p id="directive-summary"></p>
+                  <details>
+                    <summary>Why this matters</summary>
+                    <p id="directive-why"></p>
+                  </details>
+                  <div class="directive-progress" id="directive-progress" hidden>
+                    <span id="directive-progress-label">Step 0 of 0</span>
+                    <div class="meter" role="progressbar" aria-label="Story objective progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="directive-progress-fill"></span></div>
+                  </div>
+                </div>
+                <div class="directive-actions">
+                  <button class="primary-button" id="directive-action" type="button">Continue</button>
+                  <button class="text-button" id="directive-hide" type="button" hidden>Pause guide</button>
+                </div>
+                <div class="directive-choice-summary" id="directive-choice-summary" hidden></div>
+                <div class="directive-choice-list" id="directive-choice-list" aria-label="Story choices" hidden></div>
+                <section class="guide-companion" id="guide-companion" aria-labelledby="guide-companion-title" hidden>
+                  <div class="guide-companion-copy">
+                    <span>GUIDED START · <strong id="guide-companion-progress">0/0</strong></span>
+                    <h3 id="guide-companion-title">No active guidance step</h3>
+                    <p id="guide-companion-why"></p>
+                  </div>
+                  <div class="guide-companion-actions">
+                    <button class="quiet-button" id="guide-companion-action" type="button">Do guide step</button>
+                    <button class="text-button" type="button" data-command="guide sync">Sync completed actions</button>
+                  </div>
+                </section>
+              </div>
+            </details>
+          </aside>
+
+          <div class="world-objects">
+            <div class="world-object-group">
+              <div class="subhead-row">
+                <h3>Visible objects</h3>
+                <span id="room-item-count">0</span>
+              </div>
+              <div class="object-chip-list" id="room-item-list"></div>
+            </div>
+            <div class="world-object-group">
+              <div class="subhead-row">
+                <h3>People present</h3>
+                <span id="room-npc-count">0</span>
+              </div>
+              <div class="object-chip-list" id="room-npc-list"></div>
+            </div>
+            <div class="world-object-group">
+              <div class="subhead-row">
+                <h3>Inspect surroundings</h3>
+                <span id="inspectable-count">0</span>
+              </div>
+              <div class="object-chip-list" id="inspectable-list"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel narrative-panel" aria-labelledby="narrative-heading">
+          <header class="panel-header narrative-header">
+            <div>
+              <p class="panel-kicker">LIVE TRANSCRIPT</p>
+              <h2 id="narrative-heading">World Feed</h2>
+            </div>
+            <div class="narrative-controls">
+              <div class="transcript-filters" role="tablist" aria-label="World feed filter">
+                <button type="button" role="tab" data-transcript-filter="all" aria-selected="true">All</button>
+                <button type="button" role="tab" data-transcript-filter="world" aria-selected="false">Story</button>
+                <button type="button" role="tab" data-transcript-filter="combat" aria-selected="false">Combat</button>
+                <button type="button" role="tab" data-transcript-filter="system" aria-selected="false">System</button>
+              </div>
+              <div class="narrative-tools">
+                <button class="text-button" id="clear-transcript" type="button">Clear view</button>
+                <button class="text-button active" id="autoscroll-toggle" type="button" aria-pressed="true">Follow feed</button>
+              </div>
+            </div>
+          </header>
+          <div class="transcript" id="transcript" tabindex="0" role="log" aria-live="polite" aria-relevant="additions text" aria-atomic="false" aria-label="Game transcript" aria-describedby="command-help"></div>
+          <p class="sr-only" id="tactical-live-region" role="status" aria-live="assertive" aria-atomic="true"></p>
+        </section>
+
+        <section class="command-deck" aria-label="Command entry and actions">
+          <form class="command-form" id="command-form" autocomplete="off">
+            <label class="sr-only" for="command-input">Enter a game command</label>
+            <span class="command-prompt" aria-hidden="true">›</span>
+            <input id="command-input" maxlength="512" placeholder="Enter a command, or press / to focus…" spellcheck="false" autocapitalize="off" aria-keyshortcuts="/" aria-describedby="command-help">
+            <p class="sr-only" id="command-help">Press slash to focus this command field. Press Enter to execute. Use NEXT for one exact objective step, HELP HERE for exact nearby commands, and the Up or Down Arrow keys for command history.</p>
+            <button class="primary-button command-submit" type="submit">
+              EXECUTE <span aria-hidden="true">↵</span>
+            </button>
+          </form>
+
+          <div class="recovery-track" id="recovery-track">
+            <div class="recovery-label">
+              <span id="recovery-state">READY</span>
+              <strong id="recovery-seconds">0.0s</strong>
+            </div>
+            <div class="meter recovery-meter" role="progressbar" aria-label="Action recovery" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100">
+              <span id="recovery-fill"></span>
+              <i class="recovery-sweep"></i>
+            </div>
+            <div class="queue-readout" id="queue-readout">No action queued</div>
+          </div>
+
+          <button class="command-tray-toggle" id="command-tray-toggle" type="button" aria-expanded="false" aria-controls="action-toolbar">
+            <span aria-hidden="true">⌃</span><span>More actions</span>
+          </button>
+          <div class="action-toolbar" id="action-toolbar">
+            <button type="button" data-command="look"><span aria-hidden="true">◉</span> Look</button>
+            <button type="button" data-command="next"><span aria-hidden="true">→</span> Next</button>
+            <button type="button" data-context-slot="0"><span aria-hidden="true">◇</span> Action</button>
+            <button type="button" data-context-slot="1"><span aria-hidden="true">◇</span> Action</button>
+            <button type="button" data-context-slot="2"><span aria-hidden="true">◇</span> Action</button>
+            <button type="button" data-command="again"><span aria-hidden="true">↻</span> Again</button>
+            <button type="button" data-command="help here"><span aria-hidden="true">?</span> Context</button>
+          </div>
+        </section>
+      </section>
+
+      <aside class="right-rail" id="right-rail" aria-label="Combat, inventory, and progression">
+        <div class="right-rail-tabs" role="tablist" aria-label="Toolkit panels">
+          <button type="button" role="tab" data-rail-tab="tactical" aria-selected="true" aria-controls="right-panel-tactical"><span>Tactical</span><small id="tactical-tab-badge">READY</small></button>
+          <button type="button" role="tab" data-rail-tab="gear" aria-selected="false" aria-controls="right-panel-gear"><span>Gear</span><small id="gear-tab-badge">0</small></button>
+          <button type="button" role="tab" data-rail-tab="journey" aria-selected="false" aria-controls="right-panel-journey"><span>Journey</span><small id="journey-tab-badge">L1</small></button>
+          <button class="icon-button right-rail-close" id="right-rail-close" type="button" aria-label="Close toolkit drawer">×</button>
+        </div>
+        <div class="right-rail-panel" id="right-panel-tactical" data-rail-panel="tactical" role="tabpanel">
+        <section class="panel combat-panel" aria-labelledby="combat-heading">
+          <header class="panel-header">
+            <div>
+              <p class="panel-kicker">TACTICAL CONTROL</p>
+              <h2 id="combat-heading">Combat</h2>
+            </div>
+            <span class="combat-state" id="combat-state">CLEAR</span>
+          </header>
+
+          <section class="combat-now-card" id="combat-now-card" aria-labelledby="combat-now-heading" hidden>
+            <div class="combat-now-heading-row">
+              <div>
+                <span>COMBAT NOW · SHARED FIELD CLOCK</span>
+                <h3 id="combat-now-heading">Immediate battlefield</h3>
+              </div>
+              <div class="combat-projection-modes" role="group" aria-label="Combat information detail">
+                <button type="button" data-combat-projection="narrative" aria-checked="false">Narrative</button>
+                <button type="button" data-combat-projection="tactical" aria-checked="true">Tactical</button>
+                <button type="button" data-combat-projection="audit" aria-checked="false">Audit</button>
+              </div>
+            </div>
+            <p class="battlefield-summary" id="battlefield-summary">No active battlefield.</p>
+            <small class="battlefield-soft-time" id="battlefield-soft-time">Reading and status commands do not advance field time.</small>
+            <div class="combat-primary-deck">
+              <div class="combat-now-grid" aria-label="Immediate readiness summary">
+                <span><small>YOU</small><strong id="combat-now-player">Ready</strong></span>
+                <span><small>SOL</small><strong id="combat-now-sol">Unavailable</strong></span>
+                <span><small>NEXT THREAT</small><strong id="combat-now-threat">Area clear</strong></span>
+              </div>
+              <div class="target-card" id="target-card">
+                <div class="target-reticle" aria-hidden="true"><span></span></div>
+                <div class="target-copy">
+                  <span>SELECTED TARGET</span>
+                  <strong id="target-name">No target</strong>
+                  <div class="meter target-health" role="progressbar" aria-label="Target health" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="target-health-fill"></span></div>
+                  <small id="target-health-value">Area clear</small>
+                </div>
+              </div>
+              <div class="tactical-selects">
+                <label><span>Stance</span><select id="stance-select" aria-label="Combat stance">
+                  <option value="defensive">Defensive</option><option value="guarded">Guarded</option><option value="neutral">Neutral</option><option value="forward">Forward</option><option value="advanced">Advanced</option><option value="offensive">Offensive</option>
+                </select></label>
+                <label><span>Defense</span><select id="defense-select" aria-label="Defense mode">
+                  <option value="balanced">Balanced</option><option value="evade">Evade</option><option value="block">Block</option><option value="parry">Parry</option>
+                </select></label>
+              </div>
+              <div class="combat-now-actions" aria-label="Primary combat actions">
+                <button class="attack-button" type="button" data-command="attack"><strong>Attack</strong><small>Selected target</small></button>
+                <button type="button" data-command="assess"><strong>Assess</strong><small>Read pressure</small></button>
+                <button type="button" data-command="defense"><strong>Defend</strong><small>Review mode</small></button>
+                <button type="button" id="withdraw-button"><strong>Withdraw</strong><small>Contest an exit</small></button>
+                <button type="button" data-command="stand"><strong>Stand</strong><small>Regain footing</small></button>
+              </div>
+            </div>
+            <div class="battlefield-timeline" id="battlefield-timeline" role="list" aria-label="Actors sorted by readiness"></div>
+          </section>
+
+          <section class="enemy-roster" aria-labelledby="enemy-roster-heading">
+            <div class="subhead-row"><h3 id="enemy-roster-heading">Active hostiles</h3><span id="enemy-count-label">0</span></div>
+            <div class="enemy-list" id="enemy-list"></div>
+          </section>
+
+          <section class="combat-partner-card" id="combat-partner-card" aria-labelledby="combat-partner-name" hidden>
+            <div class="partner-heading-row">
+              <div><span>ACTIVE PARTNER · AKARI LINE</span><h3 id="combat-partner-name">Sol</h3></div>
+              <strong id="combat-partner-level">L1</strong>
+            </div>
+            <p id="combat-partner-role">Story partner · balanced order</p>
+            <div class="partner-core-grid">
+              <span><small>INTEGRITY</small><strong id="combat-partner-health-value">32 / 32</strong></span>
+              <span><small>INTENT</small><strong id="combat-partner-intent">Watching the lane</strong></span>
+              <span><small>READY</small><strong id="combat-partner-ready">Ready</strong></span>
+              <span><small>TARGET</small><strong id="combat-partner-target">Open lane</strong></span>
+            </div>
+            <div class="meter companion-health-meter" role="progressbar" aria-label="Partner integrity" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><span id="combat-partner-health-fill"></span></div>
+            <div class="partner-effect-list" id="combat-partner-effects" aria-label="Sol tactical effects"></div>
+            <div class="partner-order-row" role="group" aria-label="Sol formation order">
+              <button type="button" data-companion-order="balanced" data-command="companion order balanced"><strong>Balanced</strong><small>Setup + intercept</small></button>
+              <button type="button" data-companion-order="guard" data-command="companion order guard"><strong>Guard</strong><small>Cover + opening</small></button>
+              <button type="button" data-companion-order="assault" data-command="companion order assault"><strong>Assault</strong><small>Maximum damage · may finish</small></button>
+            </div>
+            <small class="partner-status" id="combat-partner-status">Ready to answer the battlefield.</small>
+            <div class="partner-action-row">
+              <button class="partner-sync-button" id="combat-partner-sync" type="button" data-command="companion sync status">Synchronize with Sol</button>
+              <button class="partner-advice-button" type="button" data-command="companion advise">Ask Sol for field advice</button>
+            </div>
+            <details class="partner-record">
+              <summary>Partner record</summary>
+              <div class="partner-meter-row"><span>Shared field insight</span><strong id="combat-partner-xp-value">0</strong></div>
+              <div class="meter companion-xp-meter" role="progressbar" aria-label="Partner level progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="combat-partner-xp-fill"></span></div>
+              <small id="partner-record-summary">No shared-field record yet.</small>
+            </details>
+          </section>
+
+          <section class="withdrawal-card" id="withdrawal-card" hidden>
+            <details>
+              <summary>
+                <span><small>BREAK CONTACT</small><strong id="withdrawal-summary">No route review needed</strong></span>
+                <span id="withdrawal-opponents">0 HOSTILES</span>
+              </summary>
+              <div class="withdrawal-expanded">
+                <p id="withdrawal-guidance">Choose an exit to inspect the opposed roll before committing.</p>
+                <div class="withdrawal-route-list" id="withdrawal-route-list" aria-label="Withdrawal routes and exact odds"></div>
+                <small id="withdrawal-retry-rule">Failed same-route attempts improve route-read without guaranteeing escape.</small>
+                <button class="quiet-button" type="button" data-command="withdraw status">Open full withdrawal status</button>
+              </div>
+            </details>
+          </section>
+
+          <div class="technique-card" id="technique-card" aria-labelledby="technique-name">
+            <div class="technique-heading-row">
+              <span class="technique-kicker">CLASS INSTINCT</span>
+              <strong id="technique-status">READY</strong>
+            </div>
+            <h3 id="technique-name">Signature technique unavailable</h3>
+            <p id="technique-summary">Confirm a class foundation to recover a dependable field technique.</p>
+            <div class="technique-details">
+              <span><strong id="passive-name">Passive</strong><small id="passive-summary">No passive foundation.</small></span>
+              <span><strong id="exploration-name">Exploration</strong><small id="exploration-summary">No exploration specialty.</small></span>
+            </div>
+            <div class="technique-footer">
+              <span id="guard-points">Guard 0</span>
+              <button type="button" id="technique-button"><strong>Use technique</strong><small>Context aware</small></button>
+            </div>
+          </div>
+
+          <div class="ability-card" id="ability-card" aria-labelledby="ability-heading">
+            <div class="technique-heading-row">
+              <span class="technique-kicker">CLASS BRANCH</span>
+              <strong id="ability-status">UNLEARNED</strong>
+            </div>
+            <h3 id="ability-heading">Specialization available after first contact</h3>
+            <p id="ability-summary">Two class paths will appear here after your first contact.</p>
+            <div class="ability-depth" id="ability-depth">
+              <span><strong id="ability-passive-name">Passive</strong><small id="ability-passive-summary">No branch passive selected.</small></span>
+              <span><strong id="ability-follow-up-name">Follow-up</strong><small id="ability-follow-up-summary">No chained action available.</small></span>
+              <span><strong id="ability-mastery-name">Mastery</strong><small id="ability-mastery-summary">Use a learned branch to develop mastery.</small></span>
+              <span><strong>Counterplay</strong><small id="ability-counterplay">Every strong action creates an opening.</small></span>
+            </div>
+            <div class="ability-options" id="ability-options"></div>
+            <div class="ability-actions">
+              <button type="button" id="ability-use-button" data-command="ability" disabled><strong>Use ability</strong><small>Primary branch action</small></button>
+              <button type="button" id="ability-follow-up-button" data-command="ability followup" disabled><strong>Use follow-up</strong><small id="ability-follow-up-status">No chain ready</small></button>
+            </div>
+          </div>
+
+          <div class="wound-summary">
+            <div class="subhead-row">
+              <h3>Wounds &amp; trauma</h3>
+              <button class="text-button" type="button" data-command="health">Full report</button>
+            </div>
+            <div id="wound-list"></div>
+          </div>
+        </section>
+
+        </div>
+        <div class="right-rail-panel" id="right-panel-gear" data-rail-panel="gear" role="tabpanel" hidden>
+        <section class="panel inventory-panel" aria-labelledby="inventory-heading">
+          <header class="panel-header">
+            <div>
+              <p class="panel-kicker">CARRIED ASSETS</p>
+              <h2 id="inventory-heading">Inventory</h2>
+            </div>
+            <span class="panel-count" id="inventory-count">0 ITEMS</span>
+          </header>
+
+          <div class="equipment-slots" id="equipment-slots" aria-label="Equipped items">
+            <div data-slot="main_hand"><span>MAIN HAND</span><strong>Empty</strong></div>
+            <div data-slot="body"><span>BODY</span><strong>Empty</strong></div>
+          </div>
+
+          <div class="economy-card" id="economy-card" aria-labelledby="economy-heading">
+            <div class="subhead-row">
+              <h3 id="economy-heading">Field Economy</h3>
+              <strong id="credit-balance">0 credits</strong>
+            </div>
+            <p id="companion-summary">No mercenary attached.</p>
+            <div class="economy-actions">
+              <button type="button" data-command="market">Market</button>
+              <button type="button" data-command="craft">Craft</button>
+              <button type="button" data-command="companion">Companion</button>
+            </div>
+            <div class="vendor-list" id="vendor-list"></div>
+            <div class="recipe-list" id="recipe-list"></div>
+          </div>
+
+          <div class="inventory-list" id="inventory-list"></div>
+
+          <div class="panel-footer-actions">
+            <button type="button" data-command="inventory">Text inventory</button>
+            <button type="button" data-command="equipment">Equipment report</button>
+          </div>
+        </section>
+
+        </div>
+        <div class="right-rail-panel" id="right-panel-journey" data-rail-panel="journey" role="tabpanel" hidden>
+        <section class="panel progress-panel" aria-labelledby="progress-heading">
+          <header class="panel-header">
+            <div>
+              <p class="panel-kicker">LONG-TERM VECTOR</p>
+              <h2 id="progress-heading">Progress &amp; Journal</h2>
+            </div>
+          </header>
+
+          <section class="sovereignty-card" id="sovereignty-card" aria-labelledby="sovereignty-title" hidden>
+            <div class="foundation-heading-row">
+              <div><span>CHOICE, ALLEGIANCE &amp; LOCAL CONSEQUENCE</span><h3 id="sovereignty-title">Independent</h3></div>
+              <strong id="sovereignty-rank">UNPLEDGED</strong>
+            </div>
+            <p class="sovereignty-summary" id="sovereignty-summary">Faction interest and candidacy never silently become allegiance.</p>
+            <div class="sovereignty-stats">
+              <span><small>SPRAWL TRUST</small><strong id="sovereignty-trust">+0</strong></span>
+              <span><small>PARTY</small><strong id="foundation-party-summary">2 / 8</strong></span>
+              <span><small>FORMATION</small><strong id="foundation-party-formation">Balanced</strong></span>
+            </div>
+            <section class="pledge-confirmation" id="pledge-confirmation" hidden aria-live="assertive">
+              <span>DECISION PENDING</span><strong id="pledge-confirmation-title">Faction pledge</strong>
+              <p>Action? [Y/N] Allegiance changes only after your explicit answer.</p>
+              <div><button type="button" data-command="faction y">Yes — pledge</button><button type="button" data-command="faction n">No — retain sovereignty</button></div>
+            </section>
+            <details class="faction-standing-disclosure">
+              <summary>Seven-faction standing ledger</summary>
+              <div class="faction-standing-list" id="faction-standing-list" aria-label="Faction standings and pledge eligibility"></div>
+            </details>
+            <p class="authority-limit">Class route, faction interest, candidacy, allegiance, guild membership, citizenship, territory ownership, and Commander authority remain separate states.</p>
+          </section>
+
+          <section class="sprawl-state-card" id="sprawl-state-card" aria-labelledby="sprawl-state-title" hidden>
+            <div class="foundation-heading-row">
+              <div><span>SPRAWL 15 · PROTECTION WITHOUT OWNERSHIP</span><h3 id="sprawl-state-title">Community state</h3></div>
+              <strong id="sprawl-threat-state">STABLE</strong>
+            </div>
+            <div class="sprawl-metric-grid" aria-label="Sprawl 15 community metrics">
+              <span data-sprawl-metric="supply"><small>SUPPLY</small><strong id="sprawl-supply">0</strong></span>
+              <span data-sprawl-metric="defense"><small>DEFENSE</small><strong id="sprawl-defense">0</strong></span>
+              <span data-sprawl-metric="prosperity"><small>PROSPERITY</small><strong id="sprawl-prosperity">0</strong></span>
+              <span data-sprawl-metric="tension"><small>TENSION</small><strong id="sprawl-tension">0</strong></span>
+            </div>
+            <section class="civic-mission-card" aria-labelledby="civic-mission-title">
+              <span>ACCOUNTABLE CIVIC DUTY</span><h4 id="civic-mission-title">What Protection Costs</h4>
+              <p id="civic-mission-step">Inactive · accept when ready.</p>
+              <div class="civic-action-row" id="civic-action-row"></div>
+            </section>
+            <small>Values are bounded gameplay interpretation. Population remains unmeasured, and no player, faction, guild, or U.F. ownership is asserted.</small>
+            <button class="quiet-button" type="button" data-command="territory status">Open territory status</button>
+          </section>
+
+          <section class="foundation-card" id="foundation-card" aria-labelledby="foundation-title">
+            <div class="foundation-heading-row">
+              <div>
+                <span>LEVEL 1–10 FOUNDATION</span>
+                <h3 id="foundation-title">Sprawl 15 Foundation</h3>
+              </div>
+              <strong id="foundation-status">READY</strong>
+            </div>
+            <p id="foundation-summary">A two-hour guided field foundation with Sol.</p>
+            <div class="foundation-stat-grid">
+              <span><small>LEVEL</small><strong id="foundation-level">1 / 10</strong></span>
+              <span><small>ROUTE</small><strong id="foundation-time">0 / 120 min</strong></span>
+              <span><small>DISTRICT</small><strong id="foundation-rooms">1 / 26 rooms</strong></span>
+            </div>
+            <div class="meter foundation-meter" role="progressbar" aria-label="Beginner foundation competencies" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <span id="foundation-progress-fill"></span>
+            </div>
+            <div class="foundation-active" id="foundation-active-chapter">Awakening &amp; Partnership</div>
+            <section class="difficulty-strip" id="difficulty-strip" aria-labelledby="difficulty-heading">
+              <div>
+                <span>FOUNDATION PRESSURE</span>
+                <strong id="difficulty-heading">GUIDED FOUNDATION</strong>
+              </div>
+              <p id="difficulty-summary">Levels 1–4 teach the field loop before the level 5–8 survival shock.</p>
+              <div class="difficulty-stats" aria-label="Current difficulty modifiers">
+                <span><small>ENEMY OFF/DEF</small><strong id="difficulty-offdef">−6 / −4</strong></span>
+                <span><small>DAMAGE</small><strong id="difficulty-damage">−1 / −1</strong></span>
+                <span><small>INJURY</small><strong id="difficulty-injury">NOT ACTIVE</strong></span>
+              </div>
+              <small id="difficulty-recovery">Levels 9–10 return to the average baseline.</small>
+              <button type="button" data-command="injury">Injury &amp; recovery details</button>
+            </section>
+            <section class="calibration-strip" id="calibration-strip" aria-labelledby="calibration-heading">
+              <div>
+                <span>SESSION FRICTION</span>
+                <strong id="calibration-heading">GREEN</strong>
+              </div>
+              <p id="calibration-summary">No sustained friction signal.</p>
+              <div class="calibration-stats" aria-label="Beginner session evidence">
+                <span><small>STALL</small><strong id="calibration-stall">0</strong></span>
+                <span><small>COMBAT LOOP</small><strong id="calibration-blocks">0</strong></span>
+                <span><small>RECOVERY</small><strong id="calibration-recoveries">0</strong></span>
+              </div>
+              <button type="button" data-command="companion advise">Ask Sol</button>
+            </section>
+            <section class="playtest-clock" id="playtest-clock" aria-labelledby="playtest-clock-heading">
+              <div class="playtest-heading-row">
+                <div>
+                  <span>LOCAL HUMAN-TIMING RECEIPT</span>
+                  <strong id="playtest-clock-heading">Playtest clock</strong>
+                </div>
+                <small id="playtest-status">NOT STARTED</small>
+              </div>
+              <div class="playtest-time-grid" aria-label="Playtest timing">
+                <span><small>ACTIVE</small><strong id="playtest-active">00:00:00</strong></span>
+                <span><small>IDLE</small><strong id="playtest-idle">00:00:00</strong></span>
+                <span><small>PAUSED</small><strong id="playtest-paused">00:00:00</strong></span>
+                <span><small>WALL</small><strong id="playtest-wall">00:00:00</strong></span>
+              </div>
+              <p id="playtest-basis">Timing is local, reward-neutral, and never sent over the network.</p>
+              <p id="playtest-profile">Profile: unassigned · standard · experience unspecified</p>
+              <div class="playtest-actions" id="playtest-actions">
+                <button type="button" data-playtest-action="plan" data-command="playtest plan">Plan</button>
+                <button type="button" data-playtest-action="checklist" data-command="playtest checklist">Checklist</button>
+                <button type="button" data-playtest-action="issues" data-command="playtest issues">Issues</button>
+                <button type="button" data-playtest-action="start" data-command="playtest start">Start</button>
+                <button type="button" data-playtest-action="pause" data-command="playtest pause">Pause</button>
+                <button type="button" data-playtest-action="resume" data-command="playtest resume">Resume</button>
+                <button type="button" data-playtest-action="complete" data-command="playtest complete">Complete</button>
+                <button type="button" data-playtest-action="receipt" data-command="playtest receipt">Receipt</button>
+              </div>
+              <small id="playtest-command-count">0 timed commands · 0 notes · 0 structured issues</small>
+            </section>
+            <section class="resume-briefing" id="resume-briefing" aria-labelledby="resume-briefing-heading">
+              <div class="resume-heading-row">
+                <div>
+                  <span>FIELD RESUME</span>
+                  <strong id="resume-briefing-heading">Current objective and return route</strong>
+                </div>
+                <small id="resume-checkpoint">Checkpoint preserved</small>
+              </div>
+              <p id="resume-objective">Your active objective will appear here.</p>
+              <p id="resume-route">No route guidance is currently required.</p>
+              <small id="resume-sol">Sol status unavailable.</small>
+              <div class="resume-actions">
+                <button type="button" data-command="briefing">Full briefing</button>
+                <button type="button" id="resume-route-button" data-command="route objective">Objective route</button>
+              </div>
+            </section>
+            <div class="foundation-class-assignment" id="foundation-class-assignment">
+              <span>CLASS FIELD ASSIGNMENT</span>
+              <strong id="foundation-class-title">Choose a class foundation</strong>
+              <small id="foundation-class-objective">Your class-specific objective will appear here.</small>
+            </div>
+            <div class="foundation-chapter-list" id="foundation-chapters" aria-label="Foundation chapters"></div>
+            <div class="foundation-competency-list" id="foundation-competencies" aria-label="Foundation competencies"></div>
+          </section>
+
+          <div class="story-card" id="story-card">
+            <div class="subhead-row">
+              <h3 id="story-card-heading">First Watch</h3>
+              <button class="text-button" type="button" data-command="quest">Open</button>
+            </div>
+            <strong id="story-quest-name">No active story directive</strong>
+            <p id="story-objective">Your defining decisions and relationships will remain visible here.</p>
+            <div class="meter story-meter" role="progressbar" aria-label="First Watch progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <span id="story-progress-fill"></span>
+            </div>
+            <div class="story-meta">
+              <span id="story-progress-label">Awaiting story contact</span>
+              <span id="story-checkpoint">Checkpoint not reached</span>
+            </div>
+            <div class="relationship-list" id="story-contact-list" aria-label="Current story contacts"></div>
+            <p class="route-interest" id="story-route-interest">No faction route has formally noticed your work. Membership remains unassigned.</p>
+            <section class="party-detail" id="party-detail" hidden aria-labelledby="party-detail-heading">
+              <div class="party-detail-heading-row">
+                <div>
+                  <span>BOUNDED FIELD FORMATION</span>
+                  <strong id="party-detail-heading">Relief detail</strong>
+                </div>
+                <small id="party-detail-status">No temporary detail active</small>
+              </div>
+              <p id="party-detail-summary">Leader, Report, and Support roles appear here when the clinic forms a temporary detail.</p>
+              <div class="party-role-list" id="party-role-list" aria-label="Temporary relief roles"></div>
+              <p class="party-detail-boundary" id="party-detail-boundary">This is not faction membership, guild status, commander rank, or a permanent party.</p>
+              <button class="quiet-button" id="party-detail-action" type="button" data-command="party">Open party status</button>
+            </section>
+            <section class="field-report" id="field-report" hidden aria-labelledby="field-report-heading">
+              <div class="field-report-heading-row">
+                <div>
+                  <span>BOUNDED EVIDENCE & MOVEMENT INTELLIGENCE</span>
+                  <strong id="field-report-heading">Field report</strong>
+                </div>
+                <small id="field-report-status">No bounded report active</small>
+              </div>
+              <p id="field-report-summary">Source, fact, class interpretation, uncertainty, review conditions, and expiration appear here when an evidence decision is active.</p>
+              <div class="field-report-facts" id="field-report-facts" aria-label="Report reliability and class interpretation facts"></div>
+              <p class="field-report-boundary" id="field-report-boundary">This is not faction authority, factual privilege, Commander rank, permanent surveillance, or a complete report-skill system.</p>
+              <button class="quiet-button" id="field-report-action" type="button" data-command="report">Open report status</button>
+            </section>
+            <section class="district-passage" id="district-passage" hidden aria-labelledby="district-passage-heading">
+              <div class="district-passage-heading-row">
+                <div>
+                  <span>BOUNDED PUBLIC PASSAGE</span>
+                  <strong id="district-passage-heading">District 22 passage</strong>
+                </div>
+                <small id="district-passage-status">No public district passage active</small>
+              </div>
+              <p id="district-passage-summary">Destination, verified fact, class caution, preparation, review condition, unknowns, and expiration appear here when a public passage is active.</p>
+              <div class="district-passage-facts" id="district-passage-facts" aria-label="District 22 public passage facts and limits"></div>
+              <p class="district-passage-boundary" id="district-passage-boundary">This is not faction sponsorship, citizenship, ownership, Commander authority, permanent access, or knowledge of deeper Shaklas.</p>
+              <button class="quiet-button" id="district-passage-action" type="button" data-command="district">Open district status</button>
+            </section>
+            <section class="public-service-review" id="public-service-review" hidden aria-labelledby="public-service-heading">
+              <div class="public-service-heading-row">
+                <div>
+                  <span>PUBLIC SERVICE REVIEW</span>
+                  <strong id="public-service-heading">Shaklas queue memory</strong>
+                </div>
+                <small id="public-service-status">No public-service review active</small>
+              </div>
+              <p id="public-service-summary">Claim sources, remembered precedent, review method, unresolved questions, and authority expiration appear here during the Shaklas queue review.</p>
+              <div class="public-service-facts" id="public-service-facts" aria-label="Shaklas public-service review facts and limits"></div>
+              <p class="public-service-boundary" id="public-service-boundary">This preserves access to trained clinical review. It does not assign medical priority, queue office, faction status, residency, ownership, permanent service priority, or deeper Shaklas access.</p>
+              <button class="quiet-button" id="public-service-action" type="button" data-command="service">Open service status</button>
+            </section>
+            <section class="hospice-threshold" id="hospice-threshold" hidden aria-labelledby="hospice-threshold-heading">
+              <div class="hospice-threshold-heading-row">
+                <div>
+                  <span id="hospice-threshold-kicker">PUBLIC CELL · NONCLINICAL STEWARDSHIP</span>
+                  <strong id="hospice-threshold-heading">The threshold has a cost</strong>
+                </div>
+                <small id="hospice-threshold-status">No threshold-capacity review active</small>
+              </div>
+              <p id="hospice-threshold-summary">Public functions, clinical isolation, class caution, selected capacity method, declared cost, return-route proof, unknowns, and expiration appear here.</p>
+              <div class="hospice-threshold-facts" id="hospice-threshold-facts" aria-label="Shaklas public-cell capacity and borrowed-light stewardship facts and limits"></div>
+              <p class="hospice-threshold-boundary" id="hospice-threshold-boundary">This manages temporary nonclinical public capacity only. It grants no diagnosis, treatment, medical priority, hospice office, ownership, donor claim, surveillance, or deeper Shaklas access.</p>
+              <button class="quiet-button" id="hospice-threshold-action" type="button" data-command="hospice">Open hospice status</button>
+            </section>
+            <div class="readiness-block" id="story-readiness" aria-labelledby="story-readiness-heading">
+              <div class="readiness-heading-row">
+                <strong id="story-readiness-heading">Unknown confrontation</strong>
+                <span id="story-readiness-summary">0 of 6 preparations secured</span>
+              </div>
+              <div class="meter readiness-meter" role="progressbar" aria-label="Confrontation readiness" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                <span></span>
+              </div>
+              <div class="readiness-grid" id="story-readiness-grid" aria-label="Confrontation preparation checklist"></div>
+            </div>
+            <div class="sprawl-pulse" id="sprawl-pulse" aria-labelledby="sprawl-pulse-heading">
+              <div class="readiness-heading-row">
+                <strong id="sprawl-pulse-heading">Sprawl 15 pulse</strong>
+                <span id="sprawl-pulse-summary">Local consequences pending</span>
+              </div>
+              <div class="sprawl-pulse-grid" id="sprawl-pulse-grid" aria-label="Living Sprawl conditions"></div>
+            </div>
+            <div class="relationship-list" id="story-relationship-list" aria-label="Story relationships"></div>
+          </div>
+
+          <div class="course-card" id="course-card">
+            <div class="subhead-row">
+              <h3>Active readiness course</h3>
+              <button class="text-button" type="button" data-command="course">Manage</button>
+            </div>
+            <strong id="course-name">No active course</strong>
+            <p id="course-step">Visit a course station to begin optional guidance.</p>
+            <div class="meter course-meter" role="progressbar" aria-label="Course progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <span id="course-fill"></span>
+            </div>
+          </div>
+
+          <details class="build-card">
+            <summary>
+              <span>Character build</span>
+              <strong id="build-card-class">Unselected</strong>
+            </summary>
+            <p id="build-card-route">Faction route unassigned.</p>
+            <p id="build-card-allocation">No allocation recorded.</p>
+            <button type="button" data-command="build">Text build report</button>
+          </details>
+
+          <div class="training-points">
+            <div><span>Physical</span><strong id="physical-points">0</strong></div>
+            <div><span>Mental</span><strong id="mental-points">0</strong></div>
+            <button type="button" data-command="plan">Open planner</button>
+          </div>
+
+          <div class="journal-grid">
+            <button type="button" data-command="journal locations"><span id="journal-locations">0</span>Locations</button>
+            <button type="button" data-command="journal clues"><span id="journal-clues">0</span>Clues</button>
+            <button type="button" data-command="journal courses"><span id="journal-courses">0</span>Courses</button>
+            <button type="button" data-command="journal victories"><span id="journal-victories">0</span>Victories</button>
+            <button type="button" data-command="journal sovereignty"><span id="journal-sovereignty">0</span>Sovereignty</button>
+          </div>
+
+          <section class="support-export-card" aria-labelledby="support-export-heading">
+            <div>
+              <span>READY TO SHARE</span>
+              <h3 id="support-export-heading">Support package</h3>
+              <p id="support-export-status" aria-live="polite">Updated automatically while you play.</p>
+              <small id="support-export-path">SUPPORT_EXPORTS / UPLOAD_THIS_…zip</small>
+            </div>
+            <button class="quiet-button" id="support-export-button" type="button">Update Support Package</button>
+          </section>
+        </section>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="statusbar">
+      <span><i class="status-light"></i> PRIVATE SESSION</span>
+      <span id="content-version">WORLD —</span>
+      <span id="turn-label">TURN —</span>
+      <span id="save-label">AUTOSAVE READY</span>
+      <span class="shortcut-hint"><kbd>/</kbd> COMMAND <kbd>Ctrl</kbd><kbd>K</kbd> PALETTE <kbd>[</kbd> STATUS <kbd>]</kbd> TOOLKIT <kbd>ESC</kbd> CLOSE</span>
+    </footer>
+  </div>
+
+  <div class="toast-stack" id="toast-stack" aria-live="assertive"></div>
+</body>
+</html>

@@ -1,1 +1,1 @@
-"""File, data, and runtime adapters."""
+"""Content and persistence adapters."""
