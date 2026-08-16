@@ -1,0 +1,30 @@
+{
+  "record_type": "compact-public-sbom-v1",
+  "project": "Beta Earth: Sovereignty Next",
+  "version": "0.51.1",
+  "build_id": "BESOV-0.51.1-20260816-HUD-TRUTH-ALIGNMENT",
+  "runtime": "CPython 3.11-3.13 standard library",
+  "runtime_dependency_declaration": "No third-party runtime package is required.",
+  "bundled_third_party_components": [],
+  "third_party_runtime_packages": [],
+  "runtime_network_dependencies": [],
+  "first_party_media": [
+    {
+      "path": "hud/media/field-signal.wav",
+      "classification": "deterministically synthesized first-party ambience",
+      "generator": "tools/generate_field_signal.py"
+    },
+    {
+      "path_prefix": "hud/media/sfx/",
+      "classification": "deterministically synthesized first-party interface cues"
+    }
+  ],
+  "excluded_private_inputs": [
+    "source novels and private canon bundles",
+    "original design documents and editable development fixtures",
+    "internal planning and release records",
+    "user-supplied intro music without independently verified public redistribution rights"
+  ],
+  "license": "Proprietary source-visible evaluation build; no public license inferred.",
+  "copyright_notice": "Copyright © 2026 Gateway Information Group LLC. All rights reserved."
+}

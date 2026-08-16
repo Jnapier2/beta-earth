@@ -1,13 +1,8 @@
-* text=auto
+* text=auto eol=lf
 *.bat text eol=crlf
 *.cmd text eol=crlf
-*.css text eol=lf
-*.html text eol=lf
-*.js text eol=lf
-*.json text eol=lf
-*.md text eol=lf
-*.py text eol=lf
-*.toml text eol=lf
-*.yml text eol=lf
-*.jpg binary
 *.png binary
+*.jpg binary
+*.jpeg binary
+*.wav binary
+*.zip binary

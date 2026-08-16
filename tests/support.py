@@ -1,53 +1,94 @@
 from __future__ import annotations
 
+import sys
 from pathlib import Path
-
-from beta_earth.application.service import GameService
-from beta_earth.domain.models import Stats
-from beta_earth.infrastructure.economy_loader import JsonEconomyRepository
-from beta_earth.infrastructure.json_store import JsonPlayerRepository
-from beta_earth.infrastructure.quest_loader import JsonQuestRepository
-from beta_earth.infrastructure.world_loader import JsonWorldRepository
-
-ROOT = Path(__file__).resolve().parents[1]
+from typing import TypeVar
 
 
-class FixedRandom:
-    def roll_stats(self) -> Stats:
-        return Stats(14, 12, 9, 11, 10)
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+SOURCE_ROOT = PROJECT_ROOT / "src"
+if str(SOURCE_ROOT) not in sys.path:
+    sys.path.insert(0, str(SOURCE_ROOT))
 
 
-def build_test_service(state_dir: Path) -> GameService:
-    return GameService(
-        JsonWorldRepository(ROOT / "data" / "world.json"),
-        JsonEconomyRepository(ROOT / "data" / "economy.json"),
-        JsonQuestRepository(ROOT / "data" / "quests.json"),
-        JsonPlayerRepository(state_dir),
-        FixedRandom(),
+T = TypeVar("T")
+
+
+class PredictableRandom:
+    """High ordinary rolls without triggering the open-roll surge."""
+
+    def randint(self, start: int, end: int) -> int:
+        if start == 1 and end == 100:
+            return 90
+        return end
+
+    def choice(self, values: tuple[T, ...]) -> T:
+        return values[0]
+
+
+class ScriptedRandom:
+    def __init__(self, values: list[int]) -> None:
+        self.values = list(values)
+
+    def randint(self, start: int, end: int) -> int:
+        if not self.values:
+            return min(max(50, start), end)
+        value = self.values.pop(0)
+        if not start <= value <= end:
+            raise AssertionError(f"scripted value {value} outside [{start}, {end}]")
+        return value
+
+    def choice(self, values: tuple[T, ...]) -> T:
+        return values[0]
+
+
+def load_test_catalog():
+    from beta_earth.infrastructure.content_loader import load_catalog
+
+    return load_catalog(PROJECT_ROOT / "content")
+
+
+def load_additive_test_catalog(*, declared: bool = True):
+    from dataclasses import replace
+
+    from beta_earth.domain.content import (
+        CreatureSpawnDefinition,
+        ItemSpawnDefinition,
+    )
+
+    catalog = load_test_catalog()
+    relay = catalog.rooms["relay_overlook"]
+    upgraded_relay = replace(
+        relay,
+        items=relay.items
+        + (ItemSpawnDefinition("spawn:item:relay-upgrade-token", "transit_token"),),
+        creatures=relay.creatures
+        + (
+            CreatureSpawnDefinition(
+                "spawn:creature:relay-upgrade-mite", "rust_mite"
+            ),
+        ),
+    )
+    rooms = dict(catalog.rooms)
+    rooms[relay.id] = upgraded_relay
+    return replace(
+        catalog,
+        # Synthetic next-version fixture. Production content remains 0.51.1.
+        version="0.51.2",
+        additive_from=(catalog.version,) if declared else (),
+        rooms=rooms,
     )
 
 
-def start_active(service: GameService, player: str = "player"):
-    snapshot = service.get_snapshot(player)
-    snapshot = service.execute(player, "gender female", expected_revision=snapshot.state.revision)
-    snapshot = service.execute(player, "balancedstats", expected_revision=snapshot.state.revision)
-    return service.execute(player, "begin", expected_revision=snapshot.state.revision)
+def complete_foundation(session) -> None:
+    """Finish the production new-session gate for unrelated integration tests."""
 
-def complete_route_mission(service: GameService, player: str = "player"):
-    snapshot = start_active(service, player)
     for command in (
-        "talk Caroline",
-        "accept route mission",
-        "go east",
-        "listen threshold",
-        "go east",
-        "go south",
-        "mark return route",
-        "go north",
-        "go west",
-        "go west",
-        "report route to Caroline",
+        "build class soldier",
+        "build auto",
+        "build tutorial skip",
+        "build confirm",
     ):
-        snapshot = service.execute(player, command, expected_revision=snapshot.state.revision)
-    return snapshot
-
+        session.execute(command)
+    if session.state.character.build.status != "confirmed":
+        raise AssertionError("test character foundation did not confirm")

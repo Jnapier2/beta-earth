@@ -1,85 +1,68 @@
-# Beta Earth
+# Beta Earth: Sovereignty Next
 
 [![CI](https://github.com/Jnapier2/beta-earth/actions/workflows/ci.yml/badge.svg)](https://github.com/Jnapier2/beta-earth/actions/workflows/ci.yml)
 
 [Portfolio](https://jerry-napier-portfolio.netlify.app/) · [GitHub profile](https://github.com/Jnapier2)
 
-Beta Earth is a working, local-first browser RPG vertical slice built with Python's standard library. A layered engine, validated catalogs, revision-safe saves, and a loopback-only HTTP interface keep behavior testable and local state recoverable without third-party runtime dependencies.
+Beta Earth is a local-first browser RPG that turns a large narrative world into a testable command-driven system. Version `0.51.1` combines a shared battlefield clock, independently scheduled combatants, faction pledges, civic choices, revision-safe saves, and an information-dense HUD without requiring a framework or cloud service.
 
-![Beta Earth gameplay interface](assets/beta-earth-gameplay.jpg)
+![Beta Earth tactical HUD](assets/beta-earth-sovereignty-hud.png)
 
-Version `0.4.11` includes a six-room Sprawl 15 scenario, character setup, Caroline's guided route mission, wallet and inventory state, a barter flow, and a read-only equipment-readiness preview.
+## What stands out
 
-## Release lineage
-
-- **Current public source authority:** `0.4.11`, plus later portability and CI hardening on `main`.
-- **Newer recorded final awaiting source transfer:** **Beta Earth: Sovereignty `0.5.0`**.
-- **Historical release record:** [issue #5](https://github.com/Jnapier2/beta-earth/issues/5) records that the originating package passed its test, CRC, rights, extraction, and release checks and records SHA-256 `ea30ceb8a16566f0bcc20035360eba7bdeb8c8395e044d909ed99a2395e8f97b`. Because the exact archive is unavailable, those checks cannot be rerun from this repository and are not presented as current public test coverage.
-- **Promotion status:** blocked until the exact v0.5.0 archive is recovered, checksum-matched, audited, tested, and imported through issue #5.
-
-The repository is intentionally not relabeled as v0.5.0 while those source bytes are unavailable. This makes the newer release visible without presenting an older tree as code it does not contain.
-
-## Architecture and gameplay
-
-- **Layered design:** domain rules and models stay independent of application, infrastructure, and presentation adapters.
-- **One command surface:** the HUD, API authorization, keyboard shortcuts, mission tracer, and barter actions share the same ordered set of current actions, preventing an interface from offering behavior the engine has not authorized.
-- **Defensive persistence:** JSON saves use strict validation, atomic replacement, revision checks, bounded migrations, and migration backups.
-- **Local security boundary:** the bundled server binds only to `127.0.0.1`, rejects non-loopback host/origin inputs, limits request size and concurrency, and serves restrictive security headers.
-- **Portable runtime:** content and runtime paths are project-relative; an OS-assigned port avoids scanning or displacing other applications.
-- **Accessible UI:** the HUD includes keyboard navigation, visible focus, reduced-motion support, forced-color support, responsive layouts, and minimum target sizing.
+- **Battlefield truth:** the Tactical view presents every active actor, intent, target, readiness window, interruption, and tactical effect from the engine's authoritative state.
+- **Consequential choices:** seven faction pledge routes and the Sprawl 15 civic chain use explicit confirmation, bounded rewards, and durable receipts without implying authority the player has not earned.
+- **A substantial playable world:** the validated catalog contains 118 connected rooms, 35 items, 32 creature profiles, 15 classes, and layered progression through level 20.
+- **Reliable local state:** SQLite persistence, schema migrations, revision checks, backups, and project-local runtime folders make saves recoverable and portable.
+- **Accessible by design:** keyboard navigation, visible focus, reduced-motion and high-contrast support, reading modes, responsive drawers, and persistent primary combat actions are built into the HUD.
+- **Lean runtime:** Python's standard library powers the engine, persistence, and loopback server. No package installation or external account is required.
 
 ## Run locally
 
-Requirements: Python 3.11, 3.12, or 3.13. No package installation is required.
-
-On Windows, run:
+Requirements: Windows 10 or 11, Python 3.11–3.13, and a current desktop browser. See [System requirements](SYSTEM_REQUIREMENTS.md) for the full support boundary.
 
 ```powershell
-.\START_BETA_EARTH.bat
+.\BetaEarthSovereignty.bat
 ```
 
-On any supported Python environment, run:
-
-```bash
-python run_beta_earth.py
-```
-
-The program opens a browser to an OS-assigned loopback address. Press `Ctrl+C` in the terminal to stop it. To validate startup without opening a browser or keeping the server running, use either entry point:
+For a read-only content and startup check:
 
 ```powershell
-.\START_BETA_EARTH.bat --dry-run --no-browser
+.\BetaEarthSovereignty.bat --dry-run
 ```
+
+For the end-to-end local HUD, save, and diagnostic check:
+
+```powershell
+.\BetaEarthSovereignty.bat --self-test
+```
+
+On another supported Python environment:
 
 ```bash
-python run_beta_earth.py --dry-run --no-browser
+python BetaEarthSovereignty.py
 ```
 
-Runtime state is written only to ignored project-local folders such as `state/`, `logs/`, and `temp/`.
+Runtime state remains in ignored project-local folders. The server selects an available loopback port and never binds to an external interface.
 
-## Test
+## Engineering approach
 
-```bash
-python -m unittest discover -s tests -t . -v
-```
-
-The suite covers domain validation, application transactions, migrations and persistence, loopback HTTP behavior, mission and economy flows, UI contracts, and startup resilience. Hosted CI runs the suite and startup dry-run on Windows and Ubuntu across Python 3.11-3.13. This is source-portability evidence, not a claim that every named physical computer has completed acceptance testing.
-
-## Project map
-
-| Path | Purpose |
+| Area | Implementation |
 |---|---|
-| `src/beta_earth/domain/` | Typed models and pure game rules |
-| `src/beta_earth/application/` | Use cases, command authorization, and ports |
-| `src/beta_earth/infrastructure/` | Catalog loading, persistence, runtime paths, and instance ownership |
-| `src/beta_earth/presentation/` | HTTP adapter and view-model projection |
-| `data/` | Validated world, quest, and economy catalogs with JSON schemas |
-| `static/` | Local browser HUD |
-| `tests/` | Unit and integration tests |
+| Domain | Combat, progression, sovereignty, recovery, and state migrations |
+| Application | Command parsing, scheduling, services, and deterministic results |
+| Infrastructure | Validated content loading, SQLite persistence, diagnostics, and startup checks |
+| Presentation | Command-line client plus a token-protected loopback browser HUD |
+| Verification | Representative engine, combat, persistence, content, HUD, and launch tests in CI |
 
-Additional design context is available in [Architecture](docs/ARCHITECTURE.md), [Engineering decisions](docs/DECISIONS.md), and [Compatibility](docs/COMPATIBILITY.md).
+The HUD consumes engine projections rather than inferring game rules in JavaScript. Informational commands are explicitly reading-safe; consequential actions advance the shared clock and produce state receipts. This keeps presentation detail separate from outcome authority.
 
-## Scope and status
+More detail is available in [Architecture](docs/ARCHITECTURE.md) and [Public release notes](CHANGELOG.md).
 
-This is a working single-player vertical slice, not a hosted service or a complete game. Multiplayer, internet hosting, combat, dynamic markets, and mutable equipment are outside the current scope. Save schema `4.0` remains the current format.
+## Public evaluation boundary
 
-Created by Jerry R. Napier. Copyright © 2026 Gateway Information Group LLC. All rights reserved. See [LICENSE.md](LICENSE.md) for terms.
+This repository contains a source-visible evaluation build, not a hosted service or an open-source license. Private canon sources, design documents, editable development fixtures, release tooling, and internal planning records are not included.
+
+The public build uses an original deterministic ambient track generated from the included script. The user-supplied track present in the private build is intentionally excluded because public redistribution rights have not been independently confirmed.
+
+Created by Jerry R. Napier. Copyright © 2026 Gateway Information Group LLC. All rights reserved. See [LICENSE.md](LICENSE.md).

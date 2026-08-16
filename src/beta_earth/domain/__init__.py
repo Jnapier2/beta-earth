@@ -1,1 +1,1 @@
-"""Pure domain models and rules."""
+"""Transport- and persistence-independent game rules."""

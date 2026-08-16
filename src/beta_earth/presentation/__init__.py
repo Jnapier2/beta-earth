@@ -1,1 +1,1 @@
-"""HTTP and HUD presentation adapters."""
+"""Human-facing adapters."""
