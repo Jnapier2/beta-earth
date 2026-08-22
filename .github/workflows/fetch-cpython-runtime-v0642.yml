@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - runtime-fetch-v0642-20260821
+  pull_request:
+    branches:
+      - main
 
 permissions:
   contents: read
