@@ -2,13 +2,21 @@
 
 [![CI](https://github.com/Jnapier2/beta-earth/actions/workflows/ci.yml/badge.svg)](https://github.com/Jnapier2/beta-earth/actions/workflows/ci.yml)
 
-[Portfolio](https://jerry-napier-portfolio.netlify.app/) · [GitHub profile](https://github.com/Jnapier2)
+[Download the current Windows game](https://zappytap.itch.io/beta-earth-sovereignty-next) · [Portfolio](https://jerry-napier-portfolio.netlify.app/) · [GitHub profile](https://github.com/Jnapier2)
 
-Beta Earth is a local-first browser RPG that turns a large narrative world into a testable command-driven system. Version `0.51.1` combines a shared battlefield clock, independently scheduled combatants, faction pledges, civic choices, revision-safe saves, and an information-dense HUD without requiring a framework or cloud service.
+Beta Earth is a local-first browser RPG where tactical combat, faction choices, and persistent consequences shape a shared narrative world.
 
-![Beta Earth tactical HUD](assets/beta-earth-sovereignty-hud.png)
+## Play the current game
 
-## What stands out
+The [Windows release on itch.io](https://zappytap.itch.io/beta-earth-sovereignty-next) is `0.74.2`. It brings together two adventures: build influence in **Sovereignty**, or face the survival-focused **Second Chances**. Each mode keeps its own saves, and normal play is offline after download. The package includes its Python runtime, so players do not need a separate Python installation. See the release page for system requirements and content disclosures.
+
+## Explore the source sample
+
+This repository preserves the `0.51.1` source-visible evaluation build. It is a runnable engineering sample, not the source distribution for the newer Windows release. The sample combines a shared battlefield clock, independently scheduled combatants, faction pledges, civic choices, revision-safe saves, and an information-dense HUD without requiring a framework or cloud service. [Release details](docs/PUBLIC_RELEASES.md) distinguish the two editions.
+
+![Beta Earth v0.51.1 source-sample tactical HUD](assets/beta-earth-sovereignty-hud.png)
+
+## What the source sample demonstrates
 
 - **Battlefield truth:** the Tactical view presents every active actor, intent, target, readiness window, interruption, and tactical effect from the engine's authoritative state.
 - **Consequential choices:** seven faction pledge routes and the Sprawl 15 civic chain use explicit confirmation, bounded rewards, and durable receipts without implying authority the player has not earned.
@@ -17,7 +25,7 @@ Beta Earth is a local-first browser RPG that turns a large narrative world into 
 - **Accessible by design:** keyboard navigation, visible focus, reduced-motion and high-contrast support, reading modes, responsive drawers, and persistent primary combat actions are built into the HUD.
 - **Lean runtime:** Python's standard library powers the engine, persistence, and loopback server. No package installation or external account is required.
 
-## Run locally
+## Run the source sample locally
 
 Requirements: Windows 10 or 11, Python 3.11–3.13, and a current desktop browser. See [System requirements](SYSTEM_REQUIREMENTS.md) for the full support boundary.
 
