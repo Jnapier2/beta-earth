@@ -8,7 +8,7 @@ Beta Earth is a local-first browser RPG where tactical combat, faction choices, 
 
 ## Play the current game
 
-The [Windows release on itch.io](https://zappytap.itch.io/beta-earth-sovereignty-next) is `0.74.2`. It brings together two adventures: build influence in **Sovereignty**, or face the survival-focused **Second Chances**. Each mode keeps its own saves, and normal play is offline after download. The package includes its Python runtime, so players do not need a separate Python installation. See the release page for system requirements and content disclosures.
+The [Windows release on itch.io](https://zappytap.itch.io/beta-earth-sovereignty-next) is `0.89.1-rc.1`. It brings together two adventures: build influence in **Sovereignty**, or face the survival-focused **Second Chances**. The current release adds thematic sound effects while retaining the familiar interface. Each mode keeps its own saves, and normal play is offline after download. The package includes its Python runtime, so players do not need a separate Python installation. See the release page for system requirements, development limitations, and content disclosures.
 
 ## Explore the source sample
 
