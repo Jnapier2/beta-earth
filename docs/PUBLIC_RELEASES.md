@@ -1,20 +1,20 @@
 # Beta Earth releases
 
-## Current experimental Windows game: 0.90.0-dev.15
+## Current experimental Windows game: 0.90.0-dev.17
 
 [Download Beta Earth: Sovereignty Next](https://zappytap.itch.io/beta-earth-sovereignty-next).
 
-The experimental Windows package combines Sovereignty and Second Chances behind one launcher, with separate progression and saves. It includes the runtime required for normal offline play. This packaged game is distinct from the source sample in this repository; newer implementation files are not distributed here.
+The experimental Windows package combines Sovereignty and Second Chances behind one launcher, with separate progression and saves. This release replaces separate arrival lessons with an optional scene for the chosen class; players can pause, resume, skip it, or start without training. It includes the runtime required for normal offline play. This packaged game is distinct from the source sample in this repository; newer implementation files are not distributed here.
 
 The October 4, 2026 publication record identifies:
 
-- Version: `0.90.0-dev.15`.
-- Build: `BESOV-STEAM-RETRY-EXPERIMENTAL`.
-- Archive: `BetaEarth_Combined_0.90.0-dev.15_Windows_Final_v2.zip`. The `v2` filename distinguishes the published package from an earlier unpublished candidate.
-- Size: 341,395,322 bytes.
-- SHA-256: `60b3b610f2ebd201a1351e6c8dc9d0dec3d364e98492475df12e4b80db856d24`.
+- Version: `0.90.0-dev.17`.
+- Build: `BESOV-ONE-SCENE-TRAINING-EXPERIMENTAL`.
+- Archive: `BetaEarth_Combined_0.90.0-dev.17_Windows_Player.zip`.
+- Size: 341,418,510 bytes.
+- SHA-256: `7afde477457ee32ff582513d95b10e99a2de0cb6cfdb1d6929719e4b55ca99b0`.
 
-The publication record reports final preflight, startup checks for both modes, and an independent local support export. A separate October 4 showcase review verified the retained archive's checksum, CRC, and all 922 root-managed payload hashes, and confirmed the current public file listing. The public Windows ZIP was not independently redownloaded in that review. Broad gameplay, device, and live Steam-feature tests were not rerun; earlier test results are not fresh qualification of this exact artifact.
+The October 4 publication record reports a matching independent public-download checksum, final preflight, startup checks for both modes, and a local support export. An October 7 showcase review verified the retained archive's checksum, CRC, and all 926 root-managed payload hashes and confirmed the current public file listing. That review did not redownload the public Windows ZIP or run the game. Broad gameplay, device, and live Steam-feature tests were not rerun; earlier test results are not fresh qualification of this exact artifact.
 
 The game remains in development. Automatic crash-report capture can occasionally be unavailable; a dedicated local support export is provided separately. Keep backups of saves before updating. The download page provides current installation requirements, content notes, and AI-assisted asset disclosures. Windows 10 compatibility remains unverified. This record does not establish a public Steam release or verified live achievement unlocks or Cloud restoration.
 
