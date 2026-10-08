@@ -4,11 +4,11 @@
 
 [Download the current Windows game](https://zappytap.itch.io/beta-earth-sovereignty-next) · [Portfolio](https://jerry-napier-portfolio.netlify.app/) · [GitHub profile](https://github.com/Jnapier2)
 
-Beta Earth is a local-first browser RPG where tactical combat, faction choices, and persistent consequences shape a shared narrative world.
+Beta Earth pairs a persistent science-fiction RPG with a separate survival journey. Its Windows package keeps each mode's characters and saves distinct, with an included digital library for exploring more of the world.
 
 ## Play the current game
 
-The [current itch.io download](https://zappytap.itch.io/beta-earth-sovereignty-next) is the experimental Windows build `0.90.0-dev.17`. It brings together two adventures: build influence in **Sovereignty**, or face the survival-focused **Second Chances**. An optional scene introduces the chosen class, with controls to pause, resume, or skip it. Each mode keeps its own saves, and normal play is offline after download. The package includes its Python runtime, so players do not need a separate Python installation. This development build has bounded startup and artifact checks; see the [release record](docs/PUBLIC_RELEASES.md) for its qualification limits and the download page for requirements and content disclosures.
+The [current itch.io download](https://zappytap.itch.io/beta-earth-sovereignty-next) is the experimental Windows build `0.90.0-dev.18`. Build influence in **Sovereignty**, or face the survival-focused **Second Chances**. An optional class scene offers a starting point; clearer combat guidance and Hold/Resume controls help players follow events at their own pace. Each mode keeps separate saves, and the Digital Library is available from the mode menu. Normal solo play is offline after download, with no separate Python installation needed. See the [release record](docs/PUBLIC_RELEASES.md) for inspection and setup instructions, save-update precautions, and qualification limits.
 
 ## Explore the source sample
 
