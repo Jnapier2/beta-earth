@@ -8,7 +8,7 @@ Beta Earth pairs a persistent science-fiction RPG with a separate survival journ
 
 ## Play the current game
 
-The [current itch.io download](https://zappytap.itch.io/beta-earth-sovereignty-next) is the experimental Windows build `0.90.0-dev.18`. Build influence in **Sovereignty**, or face the survival-focused **Second Chances**. An optional class scene offers a starting point; clearer combat guidance and Hold/Resume controls help players follow events at their own pace. Each mode keeps separate saves, and the Digital Library is available from the mode menu. Normal solo play is offline after download, with no separate Python installation needed. See the [release record](docs/PUBLIC_RELEASES.md) for inspection and setup instructions, save-update precautions, and qualification limits.
+For the latest experimental Windows package, open the [itch.io download page](https://zappytap.itch.io/beta-earth-sovereignty-next) and check the version and update notes shown with the download. Build influence in **Sovereignty**, or face the survival-focused **Second Chances**. An optional class scene offers a starting point; clearer combat guidance and Hold/Resume controls help players follow events at their own pace. Each mode keeps separate saves, and the Digital Library is available from the mode menu. Normal solo play is offline after download, with no separate Python installation needed. See the [release record](docs/PUBLIC_RELEASES.md) for inspection and setup instructions, save-update precautions, and qualification limits.
 
 ## Explore the source sample
 
