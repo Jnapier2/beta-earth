@@ -1,6 +1,10 @@
 # Beta Earth releases
 
-## Current experimental Windows game: 0.90.0-dev.18
+## Find the latest Windows game
+
+The [itch.io download page](https://zappytap.itch.io/beta-earth-sovereignty-next) identifies the current experimental package and its update instructions. The records below describe earlier inspected releases; they do not qualify a newer download. The source sample in this repository remains a separate edition.
+
+## Recorded Windows release: 0.90.0-dev.18 — October 7, 2026
 
 [Download Beta Earth: Sovereignty Next](https://zappytap.itch.io/beta-earth-sovereignty-next).
 
@@ -28,7 +32,7 @@ This remains an experimental release. Complete later Second Chances progression,
 
 ## Previous Windows release: 0.90.0-dev.17
 
-The previous package combined the same two adventures and introduced an optional scene for the chosen class, with pause, resume, skip, and start-without-training controls. It remains a historical release identity, separate from the current dev.18 package.
+The previous package combined the same two adventures and introduced an optional scene for the chosen class, with pause, resume, skip, and start-without-training controls. It remains a historical release identity, separate from the recorded dev.18 package.
 
 The October 4, 2026 publication record identifies:
 
