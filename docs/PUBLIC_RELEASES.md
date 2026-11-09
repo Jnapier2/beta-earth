@@ -2,7 +2,15 @@
 
 ## Find the latest Windows game
 
-The [itch.io download page](https://zappytap.itch.io/beta-earth-sovereignty-next) identifies the current experimental package and its update instructions. The records below describe earlier inspected releases; they do not qualify a newer download. The source sample in this repository remains a separate edition.
+The [itch.io download page](https://zappytap.itch.io/beta-earth-sovereignty-next) lists both Windows downloads and their versions. The [Steam store](https://store.steampowered.com/app/5114130/) offers the full game. The source sample in this repository remains a separate edition.
+
+## Windows launch update on itch.io
+
+The November 8, 2026 storefront check found **0.90.0-guidance.3** for the full Windows game and **0.90.0-guidance.3-demo.1** for Last Signal. The [November 5 launch update](https://zappytap.itch.io/beta-earth-sovereignty-next/devlog/1756356/windows-launch-fix) addresses the blank browser menu that could appear at startup. If the menu stays blank, open the address shown in the launcher.
+
+For a short play session, choose **Last Signal**, extract the complete ZIP into a writable local folder, and run `BetaEarthSovereignty.bat`. Choose a mode and follow character creation. The demo keeps its own saves. Use a separate folder when updating, and keep a backup of existing saves.
+
+The November 8 check confirmed the public listing and version labels. The November 5 release record separately covers Windows launch checks and platform delivery. Later development candidates have their own verification records.
 
 ## Recorded Windows release: 0.90.0-dev.18 — October 7, 2026
 
