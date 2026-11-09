@@ -2,13 +2,13 @@
 
 [![CI](https://github.com/Jnapier2/beta-earth/actions/workflows/ci.yml/badge.svg)](https://github.com/Jnapier2/beta-earth/actions/workflows/ci.yml)
 
-[Download the current Windows game](https://zappytap.itch.io/beta-earth-sovereignty-next) · [Portfolio](https://jerry-napier-portfolio.netlify.app/) · [GitHub profile](https://github.com/Jnapier2)
+[Download the Windows game or Last Signal demo on itch.io](https://zappytap.itch.io/beta-earth-sovereignty-next) · [Full game on Steam](https://store.steampowered.com/app/5114130/) · [Portfolio](https://jerry-napier-portfolio.netlify.app/) · [GitHub profile](https://github.com/Jnapier2)
 
 Beta Earth pairs a persistent science-fiction RPG with a separate survival journey. Its Windows package keeps each mode's characters and saves distinct, with an included digital library for exploring more of the world.
 
 ## Play the current game
 
-For the latest experimental Windows package, open the [itch.io download page](https://zappytap.itch.io/beta-earth-sovereignty-next) and check the version and update notes shown with the download. Build influence in **Sovereignty**, or face the survival-focused **Second Chances**. An optional class scene offers a starting point; clearer combat guidance and Hold/Resume controls help players follow events at their own pace. Each mode keeps separate saves, and the Digital Library is available from the mode menu. Normal solo play is offline after download, with no separate Python installation needed. See the [release record](docs/PUBLIC_RELEASES.md) for inspection and setup instructions, save-update precautions, and qualification limits.
+Choose the full Windows game on [itch.io](https://zappytap.itch.io/beta-earth-sovereignty-next) or [Steam](https://store.steampowered.com/app/5114130/). For a shorter first session, choose the separate **Last Signal** Windows demo on itch.io. It gives you a complete short mission and keeps its saves separate from the full game. Build influence in **Sovereignty**, or face the survival-focused **Second Chances**. An optional class scene offers a starting point; clearer combat guidance and Hold/Resume controls help players follow events at their own pace. Each mode keeps separate saves, and the Digital Library is available from the mode menu. Normal solo play is offline after download, with no separate Python installation needed. See the [release record](docs/PUBLIC_RELEASES.md) for inspection and setup instructions, save-update precautions, and qualification limits.
 
 ## Explore the source sample
 
