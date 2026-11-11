@@ -4,7 +4,15 @@
 
 The [itch.io download page](https://zappytap.itch.io/beta-earth-sovereignty-next) lists both Windows downloads and their versions. The [Steam store](https://store.steampowered.com/app/5114130/) offers the full game. The source sample in this repository remains a separate edition.
 
-## Windows launch update on itch.io
+## HUD Flow update on itch.io
+
+The November 11, 2026 storefront check confirmed **0.90.0-hudflow.1** for the full Windows game and **0.90.0-hudflow.1-demo.1** for the free Last Signal demo. Combat has a dedicated pane for enemy tells, strikes, and target assessments. The World Feed keeps exploration and story consequences in view. Players can pin or collapse the Combat pane, or leave it on Auto so it opens during a fight.
+
+To try the update, choose **Last Signal** on the [itch.io download page](https://zappytap.itch.io/beta-earth-sovereignty-next), extract the complete Windows ZIP, and run `BetaEarthSovereignty.bat`. Watch the Combat pane during an encounter, then use the World Feed to follow what happened next. The [HUD Flow release note](https://zappytap.itch.io/beta-earth-sovereignty-next/devlog/1764930/read-the-fight-stay-in-the-world) shows the change and links to the downloads.
+
+The November 9 Windows release checks reached character entry in each edition. The November 11 showcase check matched the saved release archives to their checksums and confirmed the itch.io listing and release note. Use itch.io for the Last Signal download.
+
+## Previous Windows launch update on itch.io
 
 The November 8, 2026 storefront check found **0.90.0-guidance.3** for the full Windows game and **0.90.0-guidance.3-demo.1** for Last Signal. The [November 5 launch update](https://zappytap.itch.io/beta-earth-sovereignty-next/devlog/1756356/windows-launch-fix) addresses the blank browser menu that could appear at startup. If the menu stays blank, open the address shown in the launcher.
 
