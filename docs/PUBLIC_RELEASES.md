@@ -10,7 +10,7 @@ The November 11, 2026 storefront check confirmed **0.90.0-hudflow.1** for the fu
 
 To try the update, choose **Last Signal** on the [itch.io download page](https://zappytap.itch.io/beta-earth-sovereignty-next), extract the complete Windows ZIP, and run `BetaEarthSovereignty.bat`. Watch the Combat pane during an encounter, then use the World Feed to follow what happened next. The [HUD Flow release note](https://zappytap.itch.io/beta-earth-sovereignty-next/devlog/1764930/read-the-fight-stay-in-the-world) shows the change and links to the downloads.
 
-The November 9 Windows release checks reached character entry in each edition. The November 11 showcase check matched the saved release archives to their checksums and confirmed the itch.io listing and release note. Use itch.io for the Last Signal download.
+The November 9 Windows release checks reached character entry in each edition. On November 11, both public itch.io ZIPs were downloaded and compared with the saved releases. Every file path and SHA-256 matched, including both manifests. The downloads have their own ZIP-level checksums. Use itch.io for the Last Signal download.
 
 ## Previous Windows launch update on itch.io
 
