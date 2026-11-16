@@ -4,7 +4,13 @@
 
 The [itch.io download page](https://zappytap.itch.io/beta-earth-sovereignty-next) lists both Windows downloads and their versions. The [Steam store](https://store.steampowered.com/app/5114130/) offers the full game. The source sample in this repository remains a separate edition.
 
-## HUD Flow update on itch.io
+## First Steps on itch.io
+
+The [itch.io download page](https://zappytap.itch.io/beta-earth-sovereignty-next) listed **0.90.0-polish.7** for the full Windows game on November 16, 2026. The independent **Last Signal** download remains **0.90.0-hudflow.1-demo.1**, with its own saves. In the full game, choose **Show me the ropes** during character creation to follow the optional opening at your own pace. The [First Steps devlog](https://zappytap.itch.io/beta-earth-sovereignty-next/devlog/1781444/first-steps-find-your-footing) explains the onboarding changes and records the earlier release in that series.
+
+This check confirms the current storefront version labels. The earlier exact download comparison is recorded below.
+
+## Earlier HUD Flow update on itch.io
 
 The November 11, 2026 storefront check confirmed **0.90.0-hudflow.1** for the full Windows game and **0.90.0-hudflow.1-demo.1** for the free Last Signal demo. Combat has a dedicated pane for enemy tells, strikes, and target assessments. The World Feed keeps exploration and story consequences in view. Players can pin or collapse the Combat pane, or leave it on Auto so it opens during a fight.
 
