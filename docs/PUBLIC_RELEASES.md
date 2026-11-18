@@ -4,7 +4,13 @@
 
 The [itch.io download page](https://zappytap.itch.io/beta-earth-sovereignty-next) lists both Windows downloads and their versions. The [Steam store](https://store.steampowered.com/app/5114130/) offers the full game. The source sample in this repository remains a separate edition.
 
-## First Steps on itch.io
+## Current Windows download on itch.io
+
+On November 17, 2026, the [itch.io download page](https://zappytap.itch.io/beta-earth-sovereignty-next) listed **0.90.0-music.1** for the full Windows game. The separate Last Signal demo remains **0.90.0-hudflow.1-demo.1**. The full game includes optional music and effects alongside its reading and display controls.
+
+This observation covers the itch.io listing. The Steam edition and the earlier exact download comparisons have their own version records.
+
+## Earlier First Steps update on itch.io
 
 The [itch.io download page](https://zappytap.itch.io/beta-earth-sovereignty-next) listed **0.90.0-polish.7** for the full Windows game on November 16, 2026. The independent **Last Signal** download remains **0.90.0-hudflow.1-demo.1**, with its own saves. In the full game, choose **Show me the ropes** during character creation to follow the optional opening at your own pace. The [First Steps devlog](https://zappytap.itch.io/beta-earth-sovereignty-next/devlog/1781444/first-steps-find-your-footing) explains the onboarding changes and records the earlier release in that series.
 
