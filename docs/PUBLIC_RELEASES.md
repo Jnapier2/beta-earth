@@ -16,9 +16,9 @@ On November 17, 2026, the itch.io download page listed **0.90.0-music.1** for th
 
 ## Earlier First Steps update on itch.io
 
-The [itch.io download page](https://zappytap.itch.io/beta-earth-sovereignty-next) listed **0.90.0-polish.7** for the full Windows game on November 16, 2026. The independent **Last Signal** download remains **0.90.0-hudflow.1-demo.1**, with its own saves. In the full game, choose **Show me the ropes** during character creation to follow the optional opening at your own pace. The [First Steps devlog](https://zappytap.itch.io/beta-earth-sovereignty-next/devlog/1781444/first-steps-find-your-footing) explains the onboarding changes and records the earlier release in that series.
+The [itch.io download page](https://zappytap.itch.io/beta-earth-sovereignty-next) listed **0.90.0-polish.7** for the full Windows game on November 16, 2026. The independent **Last Signal** download was listed as **0.90.0-hudflow.1-demo.1**, with its own saves. In the full game, choose **Show me the ropes** during character creation to follow the optional opening at your own pace. The [First Steps devlog](https://zappytap.itch.io/beta-earth-sovereignty-next/devlog/1781444/first-steps-find-your-footing) explains the onboarding changes and records the earlier release in that series.
 
-This check confirms the current storefront version labels. The earlier exact download comparison is recorded below.
+This check confirmed the storefront version labels on that date. The earlier exact download comparison is recorded below.
 
 ## Earlier HUD Flow update on itch.io
 
