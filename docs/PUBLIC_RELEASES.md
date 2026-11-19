@@ -4,11 +4,15 @@
 
 The [itch.io download page](https://zappytap.itch.io/beta-earth-sovereignty-next) lists both Windows downloads and their versions. The [Steam store](https://store.steampowered.com/app/5114130/) offers the full game. The source sample in this repository remains a separate edition.
 
-## Current Windows download on itch.io
+## Current Windows release: Homecoming
 
-On November 17, 2026, the [itch.io download page](https://zappytap.itch.io/beta-earth-sovereignty-next) listed **0.90.0-music.1** for the full Windows game. The separate Last Signal demo remains **0.90.0-hudflow.1-demo.1**. The full game includes optional music and effects alongside its reading and display controls.
+The full game is **0.90.0-homecoming.3** and the separate **Last Signal** demo is **0.90.0-homecoming.3-demo.1**. Homecoming improves quest guidance and save recovery. Try a new journey in Sovereignty or Second Chances, or start with Last Signal for a short mission with its own saves. [Windows downloads on itch.io](https://zappytap.itch.io/beta-earth-sovereignty-next) · [Homecoming on Steam](https://store.steampowered.com/news/app/5114130/view/677389771217043805)
 
-This observation covers the itch.io listing. The Steam edition and the earlier exact download comparisons have their own version records.
+On November 18, 2026, publisher verification compared the Windows downloads from Steam and itch.io with the released packages and launched both modes in the full game and demo. On November 19, both itch.io version labels and the Steam Homecoming announcement were checked again. Keep a backup of your saves and extract itch.io updates into a separate writable folder. [Homecoming release notes on itch.io](https://zappytap.itch.io/beta-earth-sovereignty-next/devlog/1790532/homecoming-your-journey-within-reach)
+
+## Earlier music update on itch.io
+
+On November 17, 2026, the itch.io download page listed **0.90.0-music.1** for the full Windows game and **0.90.0-hudflow.1-demo.1** for Last Signal. The full game included optional music and effects alongside its reading and display controls. That observation covered the itch.io listing.
 
 ## Earlier First Steps update on itch.io
 
