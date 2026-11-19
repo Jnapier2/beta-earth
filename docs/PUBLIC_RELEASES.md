@@ -4,17 +4,21 @@
 
 The [itch.io download page](https://zappytap.itch.io/beta-earth-sovereignty-next) lists both Windows downloads and their versions. The [Steam store](https://store.steampowered.com/app/5114130/) offers the full game. The source sample in this repository remains a separate edition.
 
-## Current Windows download on itch.io
+## Current Windows release: Homecoming
 
-On November 17, 2026, the [itch.io download page](https://zappytap.itch.io/beta-earth-sovereignty-next) listed **0.90.0-music.1** for the full Windows game. The separate Last Signal demo remains **0.90.0-hudflow.1-demo.1**. The full game includes optional music and effects alongside its reading and display controls.
+The full game is **0.90.0-homecoming.3** and the separate **Last Signal** demo is **0.90.0-homecoming.3-demo.1**. Homecoming improves quest guidance and save recovery. Try a new journey in Sovereignty or Second Chances, or start with Last Signal for a short mission with its own saves. [Windows downloads on itch.io](https://zappytap.itch.io/beta-earth-sovereignty-next) · [Homecoming on Steam](https://store.steampowered.com/news/app/5114130/view/677389771217043805)
 
-This observation covers the itch.io listing. The Steam edition and the earlier exact download comparisons have their own version records.
+On November 18, 2026, publisher verification compared the Windows downloads from Steam and itch.io with the released packages and launched both modes in the full game and demo. On November 19, both itch.io version labels and the Steam Homecoming announcement were checked again. Keep a backup of your saves and extract itch.io updates into a separate writable folder. [Homecoming release notes on itch.io](https://zappytap.itch.io/beta-earth-sovereignty-next/devlog/1790532/homecoming-your-journey-within-reach)
+
+## Earlier music update on itch.io
+
+On November 17, 2026, the itch.io download page listed **0.90.0-music.1** for the full Windows game and **0.90.0-hudflow.1-demo.1** for Last Signal. The full game included optional music and effects alongside its reading and display controls. That observation covered the itch.io listing.
 
 ## Earlier First Steps update on itch.io
 
-The [itch.io download page](https://zappytap.itch.io/beta-earth-sovereignty-next) listed **0.90.0-polish.7** for the full Windows game on November 16, 2026. The independent **Last Signal** download remains **0.90.0-hudflow.1-demo.1**, with its own saves. In the full game, choose **Show me the ropes** during character creation to follow the optional opening at your own pace. The [First Steps devlog](https://zappytap.itch.io/beta-earth-sovereignty-next/devlog/1781444/first-steps-find-your-footing) explains the onboarding changes and records the earlier release in that series.
+The [itch.io download page](https://zappytap.itch.io/beta-earth-sovereignty-next) listed **0.90.0-polish.7** for the full Windows game on November 16, 2026. The independent **Last Signal** download was listed as **0.90.0-hudflow.1-demo.1**, with its own saves. In the full game, choose **Show me the ropes** during character creation to follow the optional opening at your own pace. The [First Steps devlog](https://zappytap.itch.io/beta-earth-sovereignty-next/devlog/1781444/first-steps-find-your-footing) explains the onboarding changes and records the earlier release in that series.
 
-This check confirms the current storefront version labels. The earlier exact download comparison is recorded below.
+This check confirmed the storefront version labels on that date. The earlier exact download comparison is recorded below.
 
 ## Earlier HUD Flow update on itch.io
 
