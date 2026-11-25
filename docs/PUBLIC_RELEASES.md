@@ -4,9 +4,15 @@
 
 The [itch.io download page](https://zappytap.itch.io/beta-earth-sovereignty-next) lists both Windows downloads and their versions. The [Steam store](https://store.steampowered.com/app/5114130/) offers the full game. The source sample in this repository remains a separate edition.
 
-## Current Windows release: Homecoming
+## Current Windows release
 
-The full game is **0.90.0-homecoming.3** and the separate **Last Signal** demo is **0.90.0-homecoming.3-demo.1**. Homecoming improves quest guidance and save recovery. Try a new journey in Sovereignty or Second Chances, or start with Last Signal for a short mission with its own saves. [Windows downloads on itch.io](https://zappytap.itch.io/beta-earth-sovereignty-next) · [Homecoming on Steam](https://store.steampowered.com/news/app/5114130/view/677389771217043805)
+The full Windows game is **0.90.0-homecoming.26-account-xp.3**. Earn Field Insight through combat, quests, exploration, and first-time crafting. It advances your account and the class you’re playing. Account ranks carry across characters on the same installation. [Play on Steam](https://store.steampowered.com/app/5114130/) · [Download on itch.io](https://zappytap.itch.io/beta-earth-sovereignty-next)
+
+For a short first session, choose **Last Signal**, the separate Windows demo with its own saves. itch.io also offers a macOS/Linux desktop preview. The November 24, 2026 publisher checks covered both full-game modes on Windows. Native macOS/Linux play and cross-device Steam Cloud sync remain unverified.
+
+## Earlier Windows release: Homecoming
+
+The full game was **0.90.0-homecoming.3** and the separate **Last Signal** demo was **0.90.0-homecoming.3-demo.1**. Homecoming improves quest guidance and save recovery. Try a new journey in Sovereignty or Second Chances, or start with Last Signal for a short mission with its own saves. [Windows downloads on itch.io](https://zappytap.itch.io/beta-earth-sovereignty-next) · [Homecoming on Steam](https://store.steampowered.com/news/app/5114130/view/677389771217043805)
 
 On November 18, 2026, publisher verification compared the Windows downloads from Steam and itch.io with the released packages and launched both modes in the full game and demo. On November 19, both itch.io version labels and the Steam Homecoming announcement were checked again. Keep a backup of your saves and extract itch.io updates into a separate writable folder. [Homecoming release notes on itch.io](https://zappytap.itch.io/beta-earth-sovereignty-next/devlog/1790532/homecoming-your-journey-within-reach)
 
