@@ -8,7 +8,7 @@ The [itch.io download page](https://zappytap.itch.io/beta-earth-sovereignty-next
 
 The full Windows game is **0.90.0-homecoming.26-account-xp.3**. Earn Field Insight through combat, quests, exploration, and first-time crafting. It advances your account and the class you’re playing. Account ranks carry across characters on the same installation. [Play on Steam](https://store.steampowered.com/app/5114130/) · [Download on itch.io](https://zappytap.itch.io/beta-earth-sovereignty-next)
 
-For a short first session, choose **Last Signal**, the separate Windows demo with its own saves. itch.io also offers a macOS/Linux desktop preview. The November 24, 2026 publisher checks covered both full-game modes on Windows. Native macOS/Linux play and cross-device Steam Cloud sync remain unverified.
+For a short first session, choose **Last Signal (0.90.0-homecoming.21-demo.1)** on the [itch.io download page](https://zappytap.itch.io/beta-earth-sovereignty-next). The Windows demo keeps its own saves. The November 24, 2026 publisher checks covered both full-game modes on Windows and verified that both demo modes could launch and finish. itch.io also offers a macOS/Linux desktop preview. Native macOS/Linux play and cross-device Steam Cloud sync remain unverified.
 
 ## Earlier Windows release: Homecoming
 
