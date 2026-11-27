@@ -6,15 +6,19 @@ The [itch.io download page](https://zappytap.itch.io/beta-earth-sovereignty-next
 
 ## Current Windows release
 
-The full Windows game is **0.90.0-homecoming.26-account-xp.3**. Earn Field Insight through combat, quests, exploration, and first-time crafting. It advances your account and the class you’re playing. Account ranks carry across characters on the same installation. [Play on Steam](https://store.steampowered.com/app/5114130/) · [Download on itch.io](https://zappytap.itch.io/beta-earth-sovereignty-next)
+The **Field Notes** Windows game is **0.90.0-homecoming.26-account-xp.40**. Load a character, open the **Journal**, and search for a discovery you want to revisit. **Show route** gives directions one step at a time. Examining or interacting with a discovery adds detail to its entry. [Play on Steam](https://store.steampowered.com/app/5114130/) · [Download on itch.io](https://zappytap.itch.io/beta-earth-sovereignty-next)
 
-For a short first session, choose **Last Signal (0.90.0-homecoming.21-demo.1)** on the [itch.io download page](https://zappytap.itch.io/beta-earth-sovereignty-next). The Windows demo keeps its own saves. The November 24, 2026 publisher checks covered both full-game modes on Windows and verified that both demo modes could launch and finish. Cross-device Steam Cloud sync remains unverified.
+For a shorter first session, choose **Last Signal (0.90.0-homecoming.21-demo.34)**. The Windows demo keeps its own saves. The publisher’s November 26 release check confirmed the full game and demo on Steam’s public branches. The November 27 itch.io listing identifies both Windows downloads. [Field Notes release](https://zappytap.itch.io/beta-earth-sovereignty-next/devlog/1810109/field-notes)
 
 ## Current macOS and Linux desktop preview
 
-Choose **Beta Earth — Desktop Preview** (`0.90.0-homecoming.26-account-xp.3-portable.2`). Install Python 3.14, extract the download, and run `sh ./Play_Beta_Earth.sh` from the extracted folder. [Download on itch.io](https://zappytap.itch.io/beta-earth-sovereignty-next#download)
+Choose **Beta Earth — Desktop Preview** (`0.90.0-homecoming.26-account-xp.40-portable.1`). Install Python 3.14, extract the download, and run `sh ./Play_Beta_Earth.sh` from the extracted folder. Choose **Language** on the mode menu to explore translated menus, HUD labels, and selected scenes. Typed commands and the rest of the game text use English. [Download on itch.io](https://zappytap.itch.io/beta-earth-sovereignty-next#download)
 
-Choose **Language** on the mode menu to try translated menus, HUD labels, and selected scenes. Typed commands and the rest of the game text use English. The publisher checked the preview on Windows. Native macOS and Linux play remain unverified.
+The publisher reports checking both modes on Linux. Native macOS play and cross-device Steam Cloud sync remain unverified.
+
+## Earlier Windows release and desktop preview
+
+On November 24, 2026, the publisher checked both modes in the Windows full game **0.90.0-homecoming.26-account-xp.3** and confirmed both modes could launch and finish in **Last Signal 0.90.0-homecoming.21-demo.1**. The separate desktop preview `0.90.0-homecoming.26-account-xp.3-portable.2` was checked on a Windows host. That release documented account progression through Field Insight from combat, quests, exploration and first-time crafting.
 
 ## Earlier Windows release: Homecoming
 
